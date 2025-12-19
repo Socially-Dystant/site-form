@@ -4,56 +4,77 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f4f6fb;
+  background: #f7f7f7;
   margin: 0;
-  padding: 16px;
-  color: #111827;
+  padding: 20px 16px 32px;
+  color: #1f2937;
 }
 
-/* Page title */
+/* Header */
 h1 {
-  font-size: 1.5rem;
-  margin: 8px 0 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
-/* Form = flat layout */
+.subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+/* Flat form */
 form {
   width: 100%;
-  padding: 0;
   background: none;
-  box-shadow: none;
-  border-radius: 0;
+  padding: 0;
 }
 
-/* Labels */
+/* Label */
 label {
   display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 22px;
 }
 
-/* Inputs */
+/* Input fields */
 input,
 textarea {
   width: 100%;
   margin-top: 8px;
-  padding: 16px 14px;
-  font-size: 16px; /* 👈 critical for mobile readability */
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
+  padding: 18px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f1f1f1;
+  color: #111827;
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Focus state */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
   background: #ffffff;
 }
 
-/* Notes field */
+/* Notes */
 textarea {
-  min-height: 120px;
+  min-height: 130px;
   resize: vertical;
 }
 
-/* Action buttons */
+/* Actions */
 .actions {
-  margin-top: 32px;
+  margin-top: 40px;
   display: flex;
   gap: 16px;
 }
@@ -61,50 +82,43 @@ textarea {
 /* Buttons */
 button {
   flex: 1;
-  padding: 16px;
+  padding: 16px 0;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   cursor: pointer;
 }
 
-button[type="submit"] {
-  background: #2563eb;
-  color: #ffffff;
-}
-
+/* Secondary */
 button[type="button"] {
   background: #e5e7eb;
-  color: #111827;
+  color: #6b7280;
+}
+
+/* Primary */
+button[type="submit"] {
+  background: #f59e0b;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* Resume box */
 #resumeBox {
-  margin-top: 32px;
+  margin-top: 36px;
 }
 
 #resumeBox input {
-  font-size: 14px;
-  padding: 14px;
+  background: #ffffff;
 }
 
-/* Desktop enhancement only */
+/* Desktop polish */
 @media (min-width: 768px) {
   body {
-    padding: 40px;
+    padding: 48px;
   }
 
   form {
-    max-width: 720px;
+    max-width: 640px;
     margin: 0 auto;
-  }
-
-  .actions {
-    justify-content: flex-end;
-  }
-
-  button {
-    flex: unset;
-    min-width: 140px;
   }
 }
