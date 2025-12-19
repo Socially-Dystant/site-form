@@ -50,46 +50,47 @@ if (token) {
 // -----------------------------
 // Save draft (offline-safe)
 // -----------------------------
-window.saveDraft = async function () {
-  if (!form) return;
+  window.saveDraft = function () {
+    if (!form) return;
 
-  const data = Object.fromEntries(new FormData(form));
+    // 1️⃣ Capture form data
+    const data = Object.fromEntries(new FormData(form));
 
-  // Save locally (offline works)
-  localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+    // 2️⃣ Generate a local token (offline-safe)
+    const token = crypto.randomUUID();
 
-  // Save to server for resume links
-  const res = await fetch('/api/save', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
+    // 3️⃣ Save draft locally using token
+    const payload = {
+      siteId,
+      accountId,
+      data,
+      savedAt: new Date().toISOString()
+    };
 
-  const { token } = await res.json();
+    localStorage.setItem(`resume_${token}`, JSON.stringify(payload));
 
-  // Preserve Site + Account context in resume link
-  const link =
-    `${location.origin}/resume.html` +
-    `?siteId=${encodeURIComponent(siteId)}` +
-    `&accountId=${encodeURIComponent(accountId)}` +
-    `#${token}`;
+    // 4️⃣ Also save "latest draft" for quick reloads
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
 
-  const box = document.getElementById('resumeBox');
-  const input = document.getElementById('resumeLink');
+    // 5️⃣ Build resume URL locally (NO NETWORK)
+    const link =
+      `${location.origin}/resume.html` +
+      `?siteId=${encodeURIComponent(siteId)}` +
+      `&accountId=${encodeURIComponent(accountId)}` +
+      `#${token}`;
 
-  if (box && input) {
+    // 6️⃣ Show copyable URL popup
+    const box = document.getElementById('resumeBox');
+    const input = document.getElementById('resumeLink');
+
     input.value = link;
     box.style.display = 'block';
 
-    // Auto-select for easy copy
     input.focus();
     input.select();
     input.setSelectionRange(0, 99999);
-  } else {
-    // Fallback (should rarely happen)
-    window.prompt('Copy this resume link:', link);
-  }
-};
+  };
+
 
 // -----------------------------
 // Copy resume link (safe fallback)

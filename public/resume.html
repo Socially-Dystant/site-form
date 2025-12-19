@@ -3,39 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <title>Resume Site Form</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
-  <h1>Resume Site Information</h1>
+  <div class="container">
+    <h1>Resume Site Form</h1>
+    <p class="subtitle">
+      This form was saved earlier. Review the information below and continue when ready.
+    </p>
 
-  <form id="siteForm">
-    <label>Year Built
-      <input type="number" name="yearBuilt">
-    </label>
+    <form id="siteForm">
 
-    <label>Area (sq ft)
-      <input type="number" name="area">
-    </label>
+      <div class="row">
+        <div class="field">
+          <label>Year Built</label>
+          <input type="number" name="yearBuilt">
+        </div>
 
-    <label>Stories
-      <input type="number" name="stories">
-    </label>
+        <div class="field">
+          <label>Area (sq ft)</label>
+          <input type="number" name="area">
+        </div>
+      </div>
 
-    <label>Assessor Email
-      <input type="email" name="email">
-    </label>
+      <div class="row">
+        <div class="field">
+          <label>Utility Territory</label>
+          <input type="text" name="utilityTerritory">
+        </div>
 
-    <label>Notes
-      <textarea name="notes"></textarea>
-    </label>
+        <div class="field">
+          <label>Stories</label>
+          <input type="number" name="stories">
+        </div>
+      </div>
 
-    <div class="actions">
-      <button type="button" onclick="saveDraft()">Save</button>
-      <button type="submit">Submit</button>
-    </div>
-  </form>
+      <div class="field">
+        <label>Assessor Email</label>
+        <input type="email" name="email">
+      </div>
 
-  <script src="app.js"></script>
+      <div class="field">
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="button" onclick="resumeForm()">Resume Editing</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('siteForm');
+    const params = new URLSearchParams(window.location.search);
+    const token = location.hash.replace('#', '');
+
+    if (!token) {
+      alert('Invalid or missing resume token.');
+    }
+
+    const saved = localStorage.getItem(`resume_${token}`);
+
+    if (!saved) {
+      alert('Saved form data not found on this device.');
+    } else {
+      const { data } = JSON.parse(saved);
+
+      Object.entries(data).forEach(([key, value]) => {
+        if (form[key]) {
+          form[key].value = value;
+        }
+      });
+    }
+
+    function resumeForm() {
+      // Simply redirect back to main form with same context
+      const siteId = params.get('siteId');
+      const accountId = params.get('accountId');
+
+      if (!siteId || !accountId) {
+        alert('Missing Site or Account context.');
+        return;
+      }
+
+      window.location.href =
+        `/?siteId=${encodeURIComponent(siteId)}` +
+        `&accountId=${encodeURIComponent(accountId)}` +
+        `#${token}`;
+    }
+  </script>
+
 </body>
 </html>
