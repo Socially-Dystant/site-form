@@ -1,0 +1,45 @@
+{
+  "642b0562": {
+    "data": {
+      "yearBuilt": "2025",
+      "area": "1300",
+      "stories": "1",
+      "email": "mgarcia@frontierenergy.com",
+      "notes": "notes"
+    },
+    "savedAt": "2025-12-19T16:50:49.744Z"
+  },
+  "f0d24a1b": {
+    "data": {
+      "yearBuilt": "2025",
+      "area": "1300",
+      "utilityTerritory": "PGE",
+      "stories": "1",
+      "email": "mgarcia@frontierenergy.com",
+      "notes": "notes"
+    },
+    "savedAt": "2025-12-19T17:09:48.209Z"
+  },
+  "543d67fd": {
+    "data": {
+      "yearBuilt": "2025",
+      "area": "1300",
+      "utilityTerritory": "PGE",
+      "stories": "1",
+      "email": "mgarcia@frontierenergy.com",
+      "notes": "notes"
+    },
+    "savedAt": "2025-12-19T17:32:05.202Z"
+  },
+  "72efec7d": {
+    "data": {
+      "yearBuilt": "2025",
+      "area": "1300",
+      "utilityTerritory": "PGE",
+      "stories": "1",
+      "email": "mgarcia@frontierenergy.com",
+      "notes": "notes"
+    },
+    "savedAt": "2025-12-19T17:55:23.962Z"
+  }
+}

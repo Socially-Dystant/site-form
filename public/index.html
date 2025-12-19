@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Site Form</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Site Information</h1>
+
+  <form id="siteForm">
+    <label>Year Built
+      <input type="number" name="yearBuilt">
+    </label>
+
+    <label>Area (sq ft)
+      <input type="number" name="area">
+    </label>
+
+    <label>Utility Territory
+        <input type="text" name="utilityTerritory">
+    </label>
+
+
+    <label>Stories
+      <input type="number" name="stories">
+    </label>
+
+    <label>Assessor Email
+      <input type="email" name="email">
+    </label>
+
+    <label>Notes
+      <textarea name="notes"></textarea>
+    </label>
+
+    <div class="actions">
+      <button type="button" onclick="saveDraft()">Save</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+<div id="resumeBox" style="display:none; margin-top:20px;">
+    <p><strong>Resume link (copy & save):</strong></p>
+
+    <div style="display:flex; gap:8px;">
+        <input
+        id="resumeLink"
+        type="text"
+        readonly
+        style="flex:1; padding:8px; font-size:14px;"
+        />
+        <button type="button" onclick="copyResumeLink()">Copy Link</button>
+    </div>
+
+    <p id="copyStatus" style="margin-top:6px; color:green; display:none;">
+        Link copied!
+    </p>
+    </div>
+
+    <script src="app.js"></script>
+
+    </body>
+</html>

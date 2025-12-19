@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Site Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Resume Site Information</h1>
+
+  <form id="siteForm">
+    <label>Year Built
+      <input type="number" name="yearBuilt">
+    </label>
+
+    <label>Area (sq ft)
+      <input type="number" name="area">
+    </label>
+
+    <label>Stories
+      <input type="number" name="stories">
+    </label>
+
+    <label>Assessor Email
+      <input type="email" name="email">
+    </label>
+
+    <label>Notes
+      <textarea name="notes"></textarea>
+    </label>
+
+    <div class="actions">
+      <button type="button" onclick="saveDraft()">Save</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+</html>
