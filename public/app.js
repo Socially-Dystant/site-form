@@ -1,35 +1,64 @@
+// -----------------------------
+// Context
+// -----------------------------
 const form = document.getElementById('siteForm');
+const params = new URLSearchParams(window.location.search);
 
+const siteId = params.get('siteId');
+const accountId = params.get('accountId');
+
+// Draft key is scoped per Site + Account (important)
+const DRAFT_KEY = `siteFormDraft_${siteId || 'none'}_${accountId || 'none'}`;
+
+// Fail fast if context is missing
+if (!siteId || !accountId) {
+  alert('Missing Site or Account context. Please launch this form from Salesforce.');
+}
+
+// -----------------------------
 // Restore from localStorage
+// -----------------------------
 if (form) {
-  const saved = localStorage.getItem('siteFormDraft');
+  const saved = localStorage.getItem(DRAFT_KEY);
   if (saved) {
-    Object.entries(JSON.parse(saved)).forEach(([k,v])=>{
-      if (form[k]) form[k].value = v;
-    });
+    try {
+      Object.entries(JSON.parse(saved)).forEach(([k, v]) => {
+        if (form[k]) form[k].value = v;
+      });
+    } catch (e) {
+      console.warn('Failed to restore local draft', e);
+    }
   }
 }
 
-// Resume via token
-const token = location.hash.replace('#','');
+// -----------------------------
+// Resume via token (resume.html#token)
+// -----------------------------
+const token = location.hash.replace('#', '');
 if (token) {
   fetch(`/api/load/${token}`)
     .then(r => r.json())
     .then(data => {
       if (!data) return;
-      Object.entries(data).forEach(([k,v])=>{
-        if (form[k]) form[k].value = v;
+      Object.entries(data).forEach(([k, v]) => {
+        if (form && form[k]) form[k].value = v;
       });
-    });
+    })
+    .catch(err => console.error('Resume load failed', err));
 }
 
-// Save draft
+// -----------------------------
+// Save draft (offline-safe)
+// -----------------------------
 window.saveDraft = async function () {
+  if (!form) return;
+
   const data = Object.fromEntries(new FormData(form));
 
-  // Always save locally (offline-safe)
-  localStorage.setItem('siteFormDraft', JSON.stringify(data));
+  // Save locally (offline works)
+  localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
 
+  // Save to server for resume links
   const res = await fetch('/api/save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -38,31 +67,97 @@ window.saveDraft = async function () {
 
   const { token } = await res.json();
 
+  // Preserve Site + Account context in resume link
   const link =
-    `${location.origin}/resume.html#${token}`;
+    `${location.origin}/resume.html` +
+    `?siteId=${encodeURIComponent(siteId)}` +
+    `&accountId=${encodeURIComponent(accountId)}` +
+    `#${token}`;
 
-  // Show copyable link
   const box = document.getElementById('resumeBox');
   const input = document.getElementById('resumeLink');
 
-  input.value = link;
-  box.style.display = 'block';
+  if (box && input) {
+    input.value = link;
+    box.style.display = 'block';
 
-  // Auto-select for easy copy
+    // Auto-select for easy copy
+    input.focus();
+    input.select();
+    input.setSelectionRange(0, 99999);
+  } else {
+    // Fallback (should rarely happen)
+    window.prompt('Copy this resume link:', link);
+  }
+};
+
+// -----------------------------
+// Copy resume link (safe fallback)
+// -----------------------------
+window.copyResumeLink = function () {
+  const input = document.getElementById('resumeLink');
+  if (!input) return;
+
   input.focus();
   input.select();
   input.setSelectionRange(0, 99999);
-};
-window.copyResumeLink = function () {
-  const input = document.getElementById('resumeLink');
-  input.select();
-  input.setSelectionRange(0, 99999);
 
-  navigator.clipboard.writeText(input.value).then(() => {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(input.value);
+    } else {
+      document.execCommand('copy');
+    }
+
     const msg = document.getElementById('copyStatus');
-    msg.style.display = 'block';
-    setTimeout(() => msg.style.display = 'none', 2000);
-  });
+    if (msg) {
+      msg.style.display = 'block';
+      setTimeout(() => (msg.style.display = 'none'), 2000);
+    }
+  } catch (e) {
+    alert('Please manually copy the link.');
+  }
 };
 
+// -----------------------------
+// Submit to Power Automate
+// -----------------------------
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
+    const fields = {};
+    document.querySelectorAll('[name]').forEach(el => {
+      if (el.value !== '') {
+        fields[el.name] = isNaN(el.value) ? el.value : Number(el.value);
+      }
+    });
+
+    try {
+      const res = await fetch(
+        'PASTE_YOUR_POWER_AUTOMATE_HTTP_URL_HERE',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            siteId,
+            accountId,
+            fields
+          })
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error('Power Automate submission failed');
+      }
+
+      // Clear local draft after successful submit
+      localStorage.removeItem(DRAFT_KEY);
+
+      alert('Submitted successfully!');
+    } catch (err) {
+      console.error(err);
+      alert('Submission failed. Please try again.');
+    }
+  });
+}
