@@ -1,4 +1,3 @@
-/* ===== Base / Mobile-first ===== */
 * {
   box-sizing: border-box;
 }
@@ -8,132 +7,104 @@ body {
   background: #f4f6fb;
   margin: 0;
   padding: 16px;
+  color: #111827;
 }
 
+/* Page title */
 h1 {
-  margin-bottom: 16px;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  margin: 8px 0 20px;
 }
 
-.subtitle {
-  font-size: 0.95rem;
-  color: #4b5563;
+/* Form = flat layout */
+form {
+  width: 100%;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
-/* Container (resume page uses this) */
-.container {
-  max-width: 100%;
-}
-
-/* Form card */
-form {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  width: 100%;
-}
-
-/* Labels & fields */
-label {
-  display: block;
-  margin-bottom: 16px;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
+/* Inputs */
 input,
 textarea {
   width: 100%;
-  padding: 14px 12px;
-  margin-top: 6px;
-  font-size: 16px; /* 👈 prevents mobile zoom */
+  margin-top: 8px;
+  padding: 16px 14px;
+  font-size: 16px; /* 👈 critical for mobile readability */
+  border-radius: 10px;
   border: 1px solid #d1d5db;
-  border-radius: 6px;
+  background: #ffffff;
 }
 
+/* Notes field */
 textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
-/* Rows collapse naturally on mobile */
-.row {
+/* Action buttons */
+.actions {
+  margin-top: 32px;
   display: flex;
-  flex-direction: column;
   gap: 16px;
 }
 
-.field {
-  width: 100%;
-}
-
-/* Actions */
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 24px;
-}
-
+/* Buttons */
 button {
-  padding: 14px;
+  flex: 1;
+  padding: 16px;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
-  width: 100%;
 }
 
 button[type="submit"] {
   background: #2563eb;
-  color: #fff;
+  color: #ffffff;
 }
 
 button[type="button"] {
   background: #e5e7eb;
+  color: #111827;
 }
 
-/* Resume link box */
+/* Resume box */
+#resumeBox {
+  margin-top: 32px;
+}
+
 #resumeBox input {
   font-size: 14px;
-  padding: 12px;
+  padding: 14px;
 }
 
-/* ===== Desktop Enhancements ===== */
+/* Desktop enhancement only */
 @media (min-width: 768px) {
-
   body {
     padding: 40px;
   }
 
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  .container,
   form {
-    max-width: 640px;
+    max-width: 720px;
     margin: 0 auto;
   }
 
-  .row {
-    flex-direction: row;
-    gap: 24px;
-  }
-
-  .field {
-    flex: 1;
-  }
-
   .actions {
-    flex-direction: row;
     justify-content: flex-end;
   }
 
   button {
-    width: auto;
-    min-width: 120px;
+    flex: unset;
+    min-width: 140px;
   }
 }
