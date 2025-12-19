@@ -134,3 +134,13 @@ button[type="submit"] {
     font-size: 16px;
   }
 }
+button.danger {
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+button.danger:active {
+  background: #b91c1c;
+}
+

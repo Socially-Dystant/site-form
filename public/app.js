@@ -162,3 +162,31 @@ if (form) {
     }
   });
 }
+  function confirmClearForm() {
+    const confirmed = confirm(
+      'This will permanently clear all fields on this form.\n\nThis action cannot be undone.\n\nDo you want to continue?'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    clearForm();
+  }
+
+  function clearForm() {
+    const form = document.getElementById('siteForm');
+    if (!form) return;
+
+    form.reset();
+
+    // Optional: clear any local draft for this form
+    const token = location.hash.replace('#', '');
+    if (token) {
+      localStorage.removeItem(`resume_${token}`);
+    }
+
+    // Optional UX feedback
+    alert('Form cleared.');
+  }
+
