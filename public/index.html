@@ -3,37 +3,554 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta charset="UTF-8">
-  <title>Site Form</title>
+  <title>NREN Phone Assessment</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h1>Site Information</h1>
+  <h1>NREN Phone Assessment</h1>
 
   <form id="siteForm">
-    <label>Year Built
-      <input type="number" name="yearBuilt">
-    </label>
 
-    <label>Area (sq ft)
-      <input type="number" name="area">
-    </label>
+    <section class="section">
+      <h2>Introduction</h2>
+      <div class="field">
+        <label for="in_Status">Status</label>
+        <input type="text" id="in_Status" name="in_Status">
+      </div>
+      <div class="field">
+        <label for="in_AssessmentDate">Assessment Date</label>
+        <input type="date" id="in_AssessmentDate" name="in_AssessmentDate">
+      </div>
+      <div class="field">
+        <label for="in_NRENImplementer">NREN Implementer</label>
+        <input type="text" id="in_NRENImplementer" name="in_NRENImplementer" required>
+      </div>
+      <h3>Introduction Questions</h3>
+      <div class="field">
+        <label for="in_HighestPriorities">On your application, you indicated your interests and concerns were __________. Of these, what would you say are your highest priorities?</label>
+        <input type="text" id="in_HighestPriorities" name="in_HighestPriorities">
+      </div>
+      <div class="field">
+        <label for="in_FreeLowCostVsInvestmentInterest">Is it OK with you that we cover Free and Low-Cost upgrades and actions? Would you also be interested in covering opportunities for larger investment items? (Free &amp; Low cost / Investments)</label>
+        <input type="text" id="in_FreeLowCostVsInvestmentInterest" name="in_FreeLowCostVsInvestmentInterest">
+      </div>
+      <div class="field">
+        <label for="in_BillDriver">What would you say drives your bill up the most?</label>
+        <input type="text" id="in_BillDriver" name="in_BillDriver">
+      </div>
+      <div class="field">
+        <label for="in_ExistingEnergySavingActions">What are some things you already do to save energy in your home?</label>
+        <input type="text" id="in_ExistingEnergySavingActions" name="in_ExistingEnergySavingActions">
+      </div>
+      <div class="field">
+        <label for="in_UnderstandsRateSchedule">Do you understand the electric rate schedule you are on and when electricity is least expensive for you?</label>
+        <input type="text" id="in_UnderstandsRateSchedule" name="in_UnderstandsRateSchedule">
+      </div>
+      <div class="field">
+        <label for="in_OutagePlan">Do you have a plan for when the electricity goes out?</label>
+        <input type="text" id="in_OutagePlan" name="in_OutagePlan">
+      </div>
+      <div class="field">
+        <label for="in_RepairReplacePlans">Do you have any heating or cooling systems or appliances that need repair or replacement? Are you planning any energy efficiency upgrades?</label>
+        <input type="text" id="in_RepairReplacePlans" name="in_RepairReplacePlans">
+      </div>
+      <div class="field">
+        <label for="in_GeneralNotes">General Notes</label>
+        <input type="text" id="in_GeneralNotes" name="in_GeneralNotes">
+      </div>
+      <h3>Large Loads</h3>
+      <div class="field">
+        <label for="in_HighEnergyUsingItems">High Energy Using Items (Hot Tub, Pool, Sauna, EV Charging, Well Pump, Septic/Sewage Pump, Sump Pump, Air Compressor, Workshop Tools, Ceramic Kiln, RV, Other, None)</label>
+        <input type="text" id="in_HighEnergyUsingItems" name="in_HighEnergyUsingItems">
+      </div>
+      <div class="field">
+        <label for="in_OtherLargeLoads">Other large loads</label>
+        <input type="text" id="in_OtherLargeLoads" name="in_OtherLargeLoads">
+      </div>
+      <div class="field">
+        <label for="in_ShiftLoadsOffPeak">Are you able to shift use of high energy using items to off peak hours?</label>
+        <input type="text" id="in_ShiftLoadsOffPeak" name="in_ShiftLoadsOffPeak">
+      </div>
+    </section>
 
-    <label>Utility Territory
-        <input type="text" name="utilityTerritory">
-    </label>
+    <section class="section">
+      <h2>HVAC</h2>
+      <h3>Primary Heating</h3>
+      <div class="field">
+        <label for="in_PrimaryHeatingType">What is the home’s primary heating type?</label>
+        <input type="text" id="in_PrimaryHeatingType" name="in_PrimaryHeatingType">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingFuel">What fuel does the primary heating system use?</label>
+        <input type="text" id="in_PrimaryHeatingFuel" name="in_PrimaryHeatingFuel">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingAge">How old is the primary heating system?</label>
+        <input type="text" id="in_PrimaryHeatingAge" name="in_PrimaryHeatingAge">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingEfficiency">What is the efficiency level of the primary heating system?</label>
+        <input type="text" id="in_PrimaryHeatingEfficiency" name="in_PrimaryHeatingEfficiency">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingDuctwork">Does the primary heating system use ductwork?</label>
+        <input type="text" id="in_PrimaryHeatingDuctwork" name="in_PrimaryHeatingDuctwork">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingDuctInsulation">What is the condition of the primary heating duct insulation?</label>
+        <input type="text" id="in_PrimaryHeatingDuctInsulation" name="in_PrimaryHeatingDuctInsulation">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingDuctSealing">What is the condition of the primary heating duct sealing?</label>
+        <input type="text" id="in_PrimaryHeatingDuctSealing" name="in_PrimaryHeatingDuctSealing">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingThermostatType">What type of thermostat controls the primary heating system?</label>
+        <input type="text" id="in_PrimaryHeatingThermostatType" name="in_PrimaryHeatingThermostatType">
+      </div>
+      <div class="field">
+        <label for="in_PrimaryHeatingSetpoint">What is the primary heating setpoint?</label>
+        <input type="text" id="in_PrimaryHeatingSetpoint" name="in_PrimaryHeatingSetpoint">
+      </div>
+      <div class="field">
+        <label for="in_HasSecondaryHeating">Is there a secondary heating system in the home? (Yes/No)</label>
+        <input type="text" id="in_HasSecondaryHeating" name="in_HasSecondaryHeating" required>
+      </div>
+      <h3>Secondary Heating</h3>
+      <div class="field">
+        <label for="in_SecondaryHeatingType">What is the home’s secondary heating type?</label>
+        <input type="text" id="in_SecondaryHeatingType" name="in_SecondaryHeatingType">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingFuel">What fuel does the secondary heating system use?</label>
+        <input type="text" id="in_SecondaryHeatingFuel" name="in_SecondaryHeatingFuel">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingAge">How old is the secondary heating system?</label>
+        <input type="text" id="in_SecondaryHeatingAge" name="in_SecondaryHeatingAge">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingEfficiency">What is the efficiency level of the secondary heating system?</label>
+        <input type="text" id="in_SecondaryHeatingEfficiency" name="in_SecondaryHeatingEfficiency">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingDuctwork">Does the secondary heating system use ductwork?</label>
+        <input type="text" id="in_SecondaryHeatingDuctwork" name="in_SecondaryHeatingDuctwork">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingDuctInsulation">What is the condition of the secondary heating duct insulation?</label>
+        <input type="text" id="in_SecondaryHeatingDuctInsulation" name="in_SecondaryHeatingDuctInsulation">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingDuctSealing">What is the condition of the secondary heating duct sealing?</label>
+        <input type="text" id="in_SecondaryHeatingDuctSealing" name="in_SecondaryHeatingDuctSealing">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingThermostatType">What type of thermostat controls the secondary heating system?</label>
+        <input type="text" id="in_SecondaryHeatingThermostatType" name="in_SecondaryHeatingThermostatType">
+      </div>
+      <div class="field">
+        <label for="in_SecondaryHeatingSetpoint">What is the secondary heating setpoint?</label>
+        <input type="text" id="in_SecondaryHeatingSetpoint" name="in_SecondaryHeatingSetpoint">
+      </div>
+      <div class="field">
+        <label for="in_HasTertiaryHeating">Is there a tertiary heating system in the home? (Yes/No)</label>
+        <input type="text" id="in_HasTertiaryHeating" name="in_HasTertiaryHeating" required>
+      </div>
+      <h3>Tertiary Heating</h3>
+      <div class="field">
+        <label for="in_TertiaryHeatingType">What is the home’s tertiary heating type?</label>
+        <input type="text" id="in_TertiaryHeatingType" name="in_TertiaryHeatingType">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingFuel">What fuel does the tertiary heating system use?</label>
+        <input type="text" id="in_TertiaryHeatingFuel" name="in_TertiaryHeatingFuel">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingAge">How old is the tertiary heating system?</label>
+        <input type="text" id="in_TertiaryHeatingAge" name="in_TertiaryHeatingAge">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingEfficiency">What is the efficiency level of the tertiary heating system?</label>
+        <input type="text" id="in_TertiaryHeatingEfficiency" name="in_TertiaryHeatingEfficiency">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingDuctwork">Does the tertiary heating system use ductwork?</label>
+        <input type="text" id="in_TertiaryHeatingDuctwork" name="in_TertiaryHeatingDuctwork">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingDuctInsulation">What is the condition of the tertiary heating duct insulation?</label>
+        <input type="text" id="in_TertiaryHeatingDuctInsulation" name="in_TertiaryHeatingDuctInsulation">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingDuctSealing">What is the condition of the tertiary heating duct sealing?</label>
+        <input type="text" id="in_TertiaryHeatingDuctSealing" name="in_TertiaryHeatingDuctSealing">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingThermostatType">What type of thermostat controls the tertiary heating system?</label>
+        <input type="text" id="in_TertiaryHeatingThermostatType" name="in_TertiaryHeatingThermostatType">
+      </div>
+      <div class="field">
+        <label for="in_TertiaryHeatingSetpoint">What is the tertiary heating setpoint?</label>
+        <input type="text" id="in_TertiaryHeatingSetpoint" name="in_TertiaryHeatingSetpoint">
+      </div>
+      <h3>Cooling</h3>
+      <div class="field">
+        <label for="Cooling_System">Does the home have a cooling system? (Yes/No)</label>
+        <input type="text" id="Cooling_System" name="Cooling_System" required>
+      </div>
+      <div class="field">
+        <label for="Cooling_Source">What type of cooling system does the home use?</label>
+        <input type="text" id="Cooling_Source" name="Cooling_Source">
+      </div>
+      <div class="field">
+        <label for="Cooling_Equipment_Age">How old is the cooling equipment?</label>
+        <input type="text" id="Cooling_Equipment_Age" name="Cooling_Equipment_Age">
+      </div>
+      <div class="field">
+        <label for="Cooling_System_Efficiency">What is the efficiency level of the cooling system?</label>
+        <input type="text" id="Cooling_System_Efficiency" name="Cooling_System_Efficiency">
+      </div>
+      <div class="field">
+        <label for="Cooling_Thermostat_Type">What type of thermostat controls the cooling system?</label>
+        <input type="text" id="Cooling_Thermostat_Type" name="Cooling_Thermostat_Type">
+      </div>
+      <div class="field">
+        <label for="Cooling_Setpoint2">What is the cooling setpoint?</label>
+        <input type="text" id="Cooling_Setpoint2" name="Cooling_Setpoint2">
+      </div>
+      <div class="field">
+        <label for="Cooling_Frequency">How often is cooling used in the home?</label>
+        <input type="text" id="Cooling_Frequency" name="Cooling_Frequency">
+      </div>
+      <h3>General HVAC</h3>
+      <div class="field">
+        <label for="Uses_Electric_Space_Heaters">Do you use electric space heaters to supplement heat in your home?</label>
+        <input type="text" id="Uses_Electric_Space_Heaters" name="Uses_Electric_Space_Heaters">
+      </div>
+      <div class="field">
+        <label for="Adjusts_Setpoints_When_Away">Do you reduce your heat setpoint and increase your cooling setpoint when you are not home?</label>
+        <input type="text" id="Adjusts_Setpoints_When_Away" name="Adjusts_Setpoints_When_Away">
+      </div>
+      <div class="field">
+        <label for="Uneven_Heating_Or_Cooling">Do you have uneven heating or cooling throughout your home?</label>
+        <input type="text" id="Uneven_Heating_Or_Cooling" name="Uneven_Heating_Or_Cooling">
+      </div>
+      <div class="field">
+        <label for="Maintains_Cleans_HVAC">Do you maintain and clean the filters and vents on your HVAC systems? (AC filter, Furnace Filter, Furnace Registers)</label>
+        <input type="text" id="Maintains_Cleans_HVAC" name="Maintains_Cleans_HVAC">
+      </div>
+      <div class="field">
+        <label for="in_HVACNotes">HVAC Notes</label>
+        <input type="text" id="in_HVACNotes" name="in_HVACNotes">
+      </div>
+    </section>
 
+    <section class="section">
+      <h2>Water</h2>
+      <h3>Water Heating</h3>
+      <div class="field">
+        <label for="in_DHWType">What type of domestic hot water system does the home have?</label>
+        <input type="text" id="in_DHWType" name="in_DHWType">
+      </div>
+      <div class="field">
+        <label for="in_DHWFuel">What fuel does the domestic hot water system use?</label>
+        <input type="text" id="in_DHWFuel" name="in_DHWFuel">
+      </div>
+      <div class="field">
+        <label for="in_DHWCapacity">What is the domestic hot water system capacity?</label>
+        <input type="text" id="in_DHWCapacity" name="in_DHWCapacity">
+      </div>
+      <div class="field">
+        <label for="in_DHWAge">How old is the domestic hot water system?</label>
+        <input type="text" id="in_DHWAge" name="in_DHWAge">
+      </div>
+      <div class="field">
+        <label for="in_DHWEfficiency">What is the efficiency level of the domestic hot water system?</label>
+        <input type="text" id="in_DHWEfficiency" name="in_DHWEfficiency">
+      </div>
+      <div class="field">
+        <label for="in_DHWTempSetpoint">What is the domestic hot water temperature setpoint?</label>
+        <input type="text" id="in_DHWTempSetpoint" name="in_DHWTempSetpoint">
+      </div>
+      <div class="field">
+        <label for="in_HotWaterPipeInsulation">What is the condition of the hot water pipe insulation?</label>
+        <input type="text" id="in_HotWaterPipeInsulation" name="in_HotWaterPipeInsulation">
+      </div>
+      <div class="field">
+        <label for="in_FlushesWaterHeaterYearly">Do you flush your water heater tank or the heat exchanger every year?</label>
+        <input type="text" id="in_FlushesWaterHeaterYearly" name="in_FlushesWaterHeaterYearly">
+      </div>
+      <div class="field">
+        <label for="in_LeakyFaucetsOrPlumbing">Are there any known leaky faucets or plumbing issues?</label>
+        <input type="text" id="in_LeakyFaucetsOrPlumbing" name="in_LeakyFaucetsOrPlumbing">
+      </div>
+      <div class="field">
+        <label for="in_WaterNotes">Water Notes</label>
+        <input type="text" id="in_WaterNotes" name="in_WaterNotes">
+      </div>
+    </section>
 
-    <label>Stories
-      <input type="number" name="stories">
-    </label>
+    <section class="section">
+      <h2>Envelope</h2>
+      <h3>Envelope</h3>
+      <div class="field">
+        <label for="in_AccessibleAttic">Is the attic accessible?</label>
+        <input type="text" id="in_AccessibleAttic" name="in_AccessibleAttic">
+      </div>
+      <div class="field">
+        <label for="in_AtticAccessWeatherstrippedInsulated">Is the attic access weatherstripped and insulated?</label>
+        <input type="text" id="in_AtticAccessWeatherstrippedInsulated" name="in_AtticAccessWeatherstrippedInsulated">
+      </div>
+      <div class="field">
+        <label for="in_AtticInsulated">Is the attic insulated?</label>
+        <input type="text" id="in_AtticInsulated" name="in_AtticInsulated">
+      </div>
+      <div class="field">
+        <label for="in_AtticInsulationRValue">What is the attic insulation R-value?</label>
+        <input type="text" id="in_AtticInsulationRValue" name="in_AtticInsulationRValue">
+      </div>
+      <div class="field">
+        <label for="in_InsulationInfoNotes">Add any relevant insulation info here. Try to give your best guess for R-value.</label>
+        <input type="text" id="in_InsulationInfoNotes" name="in_InsulationInfoNotes">
+      </div>
+      <div class="field">
+        <label for="in_AccessibleCrawlspace">Is the crawlspace accessible?</label>
+        <input type="text" id="in_AccessibleCrawlspace" name="in_AccessibleCrawlspace">
+      </div>
+      <div class="field">
+        <label for="in_MoistureBarrierCrawlspace">Is there a moisture barrier covering the ground in the crawlspace?</label>
+        <input type="text" id="in_MoistureBarrierCrawlspace" name="in_MoistureBarrierCrawlspace">
+      </div>
+      <div class="field">
+        <label for="in_FloorInsulated">Is the floor insulated?</label>
+        <input type="text" id="in_FloorInsulated" name="in_FloorInsulated">
+      </div>
+      <div class="field">
+        <label for="in_FloorInsulationRValue">What is the floor insulation R-value?</label>
+        <input type="text" id="in_FloorInsulationRValue" name="in_FloorInsulationRValue">
+      </div>
+      <div class="field">
+        <label for="in_ExteriorWallsInsulated">Are the exterior walls insulated?</label>
+        <input type="text" id="in_ExteriorWallsInsulated" name="in_ExteriorWallsInsulated">
+      </div>
+      <div class="field">
+        <label for="in_WindowType">What type of windows does the home have?</label>
+        <input type="text" id="in_WindowType" name="in_WindowType">
+      </div>
+      <div class="field">
+        <label for="in_CeilingPenetrations">Which ceiling penetrations are present?</label>
+        <input type="text" id="in_CeilingPenetrations" name="in_CeilingPenetrations">
+      </div>
+      <div class="field">
+        <label for="in_SkylightsKneeWallInsulation">What is the insulation condition for skylights and knee walls?</label>
+        <input type="text" id="in_SkylightsKneeWallInsulation" name="in_SkylightsKneeWallInsulation">
+      </div>
+      <div class="field">
+        <label for="in_FunctionalFireplaceDamper">Does the home have a functional fireplace damper?</label>
+        <input type="text" id="in_FunctionalFireplaceDamper" name="in_FunctionalFireplaceDamper">
+      </div>
+      <h3>Envelope General/Behavior</h3>
+      <div class="field">
+        <label for="in_HomeDrafty">Is your home drafty or does it have difficulty maintaining a desired temperature?</label>
+        <input type="text" id="in_HomeDrafty" name="in_HomeDrafty">
+      </div>
+      <div class="field">
+        <label for="in_MoistureOrMoldIssues">Do you have any known moisture or mold issues?</label>
+        <input type="text" id="in_MoistureOrMoldIssues" name="in_MoistureOrMoldIssues">
+      </div>
+      <div class="field">
+        <label for="in_UsesDehumidifierCleansFilter">Do you use a dehumidifier in your home, and do you regularly clean the filter?</label>
+        <input type="text" id="in_UsesDehumidifierCleansFilter" name="in_UsesDehumidifierCleansFilter">
+      </div>
+      <div class="field">
+        <label for="in_BathFansExhaustOutside">Do you run your bath fans during showers, and do they exhaust to outside?</label>
+        <input type="text" id="in_BathFansExhaustOutside" name="in_BathFansExhaustOutside">
+      </div>
+      <div class="field">
+        <label for="in_KitchenFanExhaustOutside">Do you have a working kitchen fan that exhausts to outside?</label>
+        <input type="text" id="in_KitchenFanExhaustOutside" name="in_KitchenFanExhaustOutside">
+      </div>
+      <div class="field">
+        <label for="in_RainGuttersDownspouts">Are the rain gutters in good working condition, and do the downspouts extend more than 6 feet from the house?</label>
+        <input type="text" id="in_RainGuttersDownspouts" name="in_RainGuttersDownspouts">
+      </div>
+      <div class="field">
+        <label for="in_AirFiltrationSystem">What type of air filtration system does the home have?</label>
+        <input type="text" id="in_AirFiltrationSystem" name="in_AirFiltrationSystem">
+      </div>
+      <div class="field">
+        <label for="in_EnvelopeNotes">Envelope Notes</label>
+        <input type="text" id="in_EnvelopeNotes" name="in_EnvelopeNotes">
+      </div>
+    </section>
 
-    <label>Assessor Email
-      <input type="email" name="email">
-    </label>
+    <section class="section">
+      <h2>Appliances</h2>
+      <h3>Refrigeration</h3>
+      <div class="field">
+        <label for="in_RefrigeratorAge">What is the age of the primary refrigerator?</label>
+        <input type="text" id="in_RefrigeratorAge" name="in_RefrigeratorAge">
+      </div>
+      <div class="field">
+        <label for="in_SecondFridgeFreezerAge">What is the age of the second refrigerator or freezer?</label>
+        <input type="text" id="in_SecondFridgeFreezerAge" name="in_SecondFridgeFreezerAge">
+      </div>
+      <div class="field">
+        <label for="in_ThirdFridgeFreezerAge">What is the age of the third refrigerator or freezer?</label>
+        <input type="text" id="in_ThirdFridgeFreezerAge" name="in_ThirdFridgeFreezerAge">
+      </div>
+      <div class="field">
+        <label for="in_FreezerHasAutoIcemaker">Does your freezer have an automatic icemaker?</label>
+        <input type="text" id="in_FreezerHasAutoIcemaker" name="in_FreezerHasAutoIcemaker">
+      </div>
+      <div class="field">
+        <label for="in_VacuumsFridgeCoilsYearly">Do you vacuum fridge coils every year?</label>
+        <input type="text" id="in_VacuumsFridgeCoilsYearly" name="in_VacuumsFridgeCoilsYearly">
+      </div>
+      <div class="field">
+        <label for="in_FridgeFreezerSealsGood">Are your fridge and freezer door seals in good condition?</label>
+        <input type="text" id="in_FridgeFreezerSealsGood" name="in_FridgeFreezerSealsGood">
+      </div>
+      <div class="field">
+        <label for="in_FridgeNearHeatSource">Is your fridge located near a heat source, such as a stove or furnace?</label>
+        <input type="text" id="in_FridgeNearHeatSource" name="in_FridgeNearHeatSource">
+      </div>
+      <h3>Kitchen</h3>
+      <div class="field">
+        <label for="in_DishwasherAge">What is the age of the dishwasher?</label>
+        <input type="text" id="in_DishwasherAge" name="in_DishwasherAge">
+      </div>
+      <div class="field">
+        <label for="in_DishwasherUsesHeatedDry">Do you use the heated dry setting on your dishwasher?</label>
+        <input type="text" id="in_DishwasherUsesHeatedDry" name="in_DishwasherUsesHeatedDry">
+      </div>
+      <div class="field">
+        <label for="in_RangeCooktopFuelType">What is the fuel type for the range or cooktop?</label>
+        <input type="text" id="in_RangeCooktopFuelType" name="in_RangeCooktopFuelType">
+      </div>
+      <div class="field">
+        <label for="in_OvenFuelType">What is the fuel type for the oven?</label>
+        <input type="text" id="in_OvenFuelType" name="in_OvenFuelType">
+      </div>
+      <h3>Laundry</h3>
+      <div class="field">
+        <label for="in_ClothesWasherType">What type of clothes washer do you have?</label>
+        <input type="text" id="in_ClothesWasherType" name="in_ClothesWasherType">
+      </div>
+      <div class="field">
+        <label for="in_DryerFuelSource">What is the dryer fuel source?</label>
+        <input type="text" id="in_DryerFuelSource" name="in_DryerFuelSource">
+      </div>
+      <div class="field">
+        <label for="in_LaundryEnergySavingHabits">Are you currently using any energy-saving laundry habits?</label>
+        <input type="text" id="in_LaundryEnergySavingHabits" name="in_LaundryEnergySavingHabits">
+      </div>
+      <div class="field">
+        <label for="in_DryerVentExhaustsOutsideClear">Does the dryer vent exhaust to outside, and is the vent clean and clear all the way out?</label>
+        <input type="text" id="in_DryerVentExhaustsOutsideClear" name="in_DryerVentExhaustsOutsideClear">
+      </div>
+      <div class="field">
+        <label for="in_ApplianceMaintenanceItems">Do you maintain and clean the filters and vents on the following appliances? (Dryer Lint Trap, Bath Exhaust Fans, Kitchen Exhaust Fan)</label>
+        <input type="text" id="in_ApplianceMaintenanceItems" name="in_ApplianceMaintenanceItems">
+      </div>
+      <div class="field">
+        <label for="in_AppliancesNotes">Appliances Notes</label>
+        <input type="text" id="in_AppliancesNotes" name="in_AppliancesNotes">
+      </div>
+    </section>
 
-    <label>Notes
-      <textarea name="notes"></textarea>
-    </label>
+    <section class="section">
+      <h2>Safety</h2>
+      <h3>Safety &amp; Resilience</h3>
+      <div class="field">
+        <label for="in_WorkingSmokeCarbonMonoxideAlarms">Do you have working smoke and carbon monoxide alarms? Have they been tested, and are more needed?</label>
+        <input type="text" id="in_WorkingSmokeCarbonMonoxideAlarms" name="in_WorkingSmokeCarbonMonoxideAlarms">
+      </div>
+      <div class="field">
+        <label for="in_FireExtinguishersOld">Do you have any fire extinguishers that are more than 12 years old?</label>
+        <input type="text" id="in_FireExtinguishersOld" name="in_FireExtinguishersOld">
+      </div>
+      <div class="field">
+        <label for="in_ReliesOnElectricMedicalEquipment">Does anyone in your household rely on electric medical equipment, such as a CPAP machine?</label>
+        <input type="text" id="in_ReliesOnElectricMedicalEquipment" name="in_ReliesOnElectricMedicalEquipment">
+      </div>
+      <div class="field">
+        <label for="in_BackupPowerSources">What backup power sources do you have?</label>
+        <input type="text" id="in_BackupPowerSources" name="in_BackupPowerSources">
+      </div>
+      <div class="field">
+        <label for="in_SignedUpForEmergencyAlerts">Are you signed up to receive emergency alerts?</label>
+        <input type="text" id="in_SignedUpForEmergencyAlerts" name="in_SignedUpForEmergencyAlerts">
+      </div>
+      <div class="field">
+        <label for="in_GasAppliancesInGarageNot18AboveGround">Do you have any gas appliances in the garage that are not 18 inches above the ground?</label>
+        <input type="text" id="in_GasAppliancesInGarageNot18AboveGround" name="in_GasAppliancesInGarageNot18AboveGround">
+      </div>
+      <div class="field">
+        <label for="in_SuspectGasLeaks">Do you ever smell sulfur or rotten egg odor, or suspect gas leaks?</label>
+        <input type="text" id="in_SuspectGasLeaks" name="in_SuspectGasLeaks">
+      </div>
+      <div class="field">
+        <label for="in_SafetyNotes">Safety Notes</label>
+        <input type="text" id="in_SafetyNotes" name="in_SafetyNotes">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Lighting</h2>
+      <h3>Plug Load &amp; Lighting</h3>
+      <div class="field">
+        <label for="in_HasNonLedLighting">Do you have any interior or exterior lighting that is not LED?</label>
+        <input type="text" id="in_HasNonLedLighting" name="in_HasNonLedLighting">
+      </div>
+      <div class="field">
+        <label for="in_LightingLoadReductionActions">Do you do any of the following to reduce lighting loads?</label>
+        <input type="text" id="in_LightingLoadReductionActions" name="in_LightingLoadReductionActions">
+      </div>
+      <div class="field">
+        <label for="in_PlugLoadReductionActions">Do you do any of the following to control plug-in appliances or devices?</label>
+        <input type="text" id="in_PlugLoadReductionActions" name="in_PlugLoadReductionActions">
+      </div>
+      <div class="field">
+        <label for="in_LightingNotes">Lighting Notes</label>
+        <input type="text" id="in_LightingNotes" name="in_LightingNotes">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Actions &amp; Referrals</h2>
+      <div class="field">
+        <label for="in_ReportDeliveryPreference">How would you like to receive your report?</label>
+        <input type="text" id="in_ReportDeliveryPreference" name="in_ReportDeliveryPreference">
+      </div>
+      <div class="field">
+        <label for="in_CareFeraEligibilityInterest">I see you are not enrolled in CARE or FERA bill discount programs. Can I help determine whether you are eligible?</label>
+        <input type="text" id="in_CareFeraEligibilityInterest" name="in_CareFeraEligibilityInterest">
+      </div>
+      <p class="info-link"><a href="https://www.pge.com/en/account/billing-and-assistance/financial-assistance/family-electric-rate-assistance-program-fera.html" target="_blank" rel="noopener">Click here for CARE/FERA eligibility</a></p>
+      <div class="field">
+        <label for="in_EsapEligibilityInterest">Have you received services from PG&amp;E’s Energy Saving Assistance Program? If not, can I help determine whether you are eligible?</label>
+        <input type="text" id="in_EsapEligibilityInterest" name="in_EsapEligibilityInterest">
+      </div>
+      <p class="info-link"><a href="https://www.pge.com/en/save-energy-and-money/energy-saving-programs/energy-saving-assistance-program.html" target="_blank" rel="noopener">Click here for ESAP eligibility</a></p>
+      <div class="field">
+        <label for="in_DemandResponseInterest">Are you interested in programs that reward you for reducing your electric use when called upon?</label>
+        <input type="text" id="in_DemandResponseInterest" name="in_DemandResponseInterest">
+      </div>
+      <div class="field">
+        <label for="in_DiagnosticAssessmentInterest">Are you interested in paying a professional to perform a diagnostic assessment of your home to test the tightness of your building envelope and duct systems or to verify the combustion safety of your gas appliances?</label>
+        <input type="text" id="in_DiagnosticAssessmentInterest" name="in_DiagnosticAssessmentInterest">
+      </div>
+      <div class="field">
+        <label for="in_FinancingProgramsInterest">Are you interested in financing programs for energy efficiency projects?</label>
+        <input type="text" id="in_FinancingProgramsInterest" name="in_FinancingProgramsInterest">
+      </div>
+      <div class="field">
+        <label for="in_OtherQuestions">Any other questions?</label>
+        <input type="text" id="in_OtherQuestions" name="in_OtherQuestions">
+      </div>
+    </section>
 
     <div class="actions">
       <button type="button" onclick="saveDraft()">Save</button>

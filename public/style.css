@@ -144,3 +144,54 @@ button.danger:active {
   background: #b91c1c;
 }
 
+/* Sections (one per flow screen: Intro, HVAC, Water, Envelope, etc.) */
+.section {
+  margin-bottom: 30px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0 0 18px;
+  color: #111827;
+}
+
+.section h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 24px 0 14px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.section h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Each question + input, replacing the old wrap-everything-in-<label> pattern */
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  margin-bottom: 0;
+}
+
+.info-link {
+  margin: -8px 0 20px;
+  font-size: 0.9rem;
+}
+
+.info-link a {
+  color: #f59e0b;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
