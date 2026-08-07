@@ -8,8 +8,12 @@ html, body {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f7f7f7;
   margin: 0;
+
+  /* Slight forest green gradient */
+  background: linear-gradient(160deg, #eef5ee 0%, #d9ead9 45%, #c3ddc6 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
 
   /* Full-width mobile padding */
   padding: 18px 16px 28px;
@@ -29,7 +33,22 @@ body {
 h1 {
   font-size: 1.7rem;
   font-weight: 800;
-  margin: 8px 0 22px;
+  margin: 8px 0 6px;
+  color: #14532d;
+}
+
+.page-indicator {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #166534;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 20px;
+}
+
+.subtitle {
+  color: #4b5563;
+  margin: 0 0 20px;
 }
 
 /* Labels: readable, spaced */
@@ -37,12 +56,69 @@ label {
   display: block;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #4b5563;
-  margin: 0 0 22px;
+  color: #374151;
+  margin: 0 0 10px;
+}
+
+/* One page = one flow screen; only the active one is visible via inline style */
+.page {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(22, 101, 52, 0.15);
+  border-radius: 18px;
+  padding: 20px 18px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.page h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0 0 18px;
+  color: #14532d;
+}
+
+.page h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 24px 0 14px;
+  color: #4d7c53;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.page h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Each question + input */
+.field {
+  margin-bottom: 20px;
+}
+
+/* Conditional groups (Secondary/Tertiary Heating, Cooling sub-questions) */
+.conditional {
+  border-left: 3px solid #86b891;
+  padding-left: 14px;
+  margin: 10px 0 20px;
+}
+
+.info-link {
+  margin: -8px 0 20px;
+  font-size: 0.9rem;
+}
+
+.info-link a {
+  color: #166534;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 /* Inputs: big, filled */
-input,
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+select,
 textarea {
   width: 100%;
   margin-top: 10px;
@@ -52,17 +128,27 @@ textarea {
   line-height: 1.2;
 
   border-radius: 14px;
-  border: 1px solid #e5e7eb;
-  background: #efefef;
+  border: 1px solid #cfe3d1;
+  background: #f4f9f4;
   color: #111827;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select {
+  background-image: linear-gradient(45deg, transparent 50%, #166534 50%), linear-gradient(135deg, #166534 50%, transparent 50%);
+  background-position: calc(100% - 22px) calc(1.3em + 2px), calc(100% - 16px) calc(1.3em + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
 }
 
 /* Focus state */
 input:focus,
+select:focus,
 textarea:focus {
   outline: none;
-  background: #ffffff;
-  border-color: #f59e0b;
+  background-color: #ffffff;
+  border-color: #16a34a;
 }
 
 /* Notes */
@@ -71,42 +157,129 @@ textarea {
   resize: vertical;
 }
 
+/* Boolean toggle fields (Yes/No checkboxes straight from the flow) */
+.checkbox-field {
+  background: #eef5ee;
+  border: 1px solid #cfe3d1;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  accent-color: #16a34a;
+}
+
+.checkbox-label span {
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Radio / checkbox option groups (DropdownBox alternatives from the flow) */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.radio-option,
+.checkbox-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  font-weight: 500;
+  color: #374151;
+  background: #f4f9f4;
+  border: 1px solid #dbe9dc;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.radio-option input,
+.checkbox-option input {
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: #16a34a;
+}
+
+.radio-option span,
+.checkbox-option span {
+  font-size: 0.95rem;
+}
+
 /* Actions: big, thumb-friendly */
 .actions {
-  margin-top: 34px;
+  margin-top: 20px;
   display: flex;
-  gap: 14px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 button {
   flex: 1;
+  min-width: 80px;
   padding: 18px 0;
-  font-size: 18px;
+  font-size: 17px;
   border-radius: 16px;
   border: none;
   cursor: pointer;
 }
 
-/* Secondary */
-button[type="button"] {
-  background: #e5e7eb;
-  color: #374151;
-  font-weight: 600;
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-/* Primary */
-button[type="submit"] {
-  background: #f59e0b;
+/* Secondary (Save / Back / Next) */
+button[type="button"] {
+  background: #e3ede4;
+  color: #14532d;
+  font-weight: 700;
+}
+
+#btnNext {
+  background: #16a34a;
   color: #ffffff;
   font-weight: 800;
+}
+
+/* Danger (Exit = save & finish) */
+button.danger {
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+button.danger:active {
+  background: #b91c1c;
 }
 
 /* Resume box layout (full width) */
 #resumeBox {
   margin-top: 28px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(22, 101, 52, 0.15);
+  border-radius: 18px;
+  padding: 18px;
 }
 
-#resumeBox > div {
+#resumeLinkRow {
   display: flex;
   gap: 10px;
 }
@@ -126,72 +299,11 @@ button[type="submit"] {
   }
 
   .container, form {
-    max-width: 720px !important;
+    max-width: 760px !important;
     margin: 0 auto !important;
   }
 
-  input, textarea, button {
+  input, select, textarea, button {
     font-size: 16px;
   }
 }
-button.danger {
-  background: #dc2626;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-button.danger:active {
-  background: #b91c1c;
-}
-
-/* Sections (one per flow screen: Intro, HVAC, Water, Envelope, etc.) */
-.section {
-  margin-bottom: 30px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.section:last-of-type {
-  border-bottom: none;
-}
-
-.section h2 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin: 0 0 18px;
-  color: #111827;
-}
-
-.section h3 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin: 24px 0 14px;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.section h3:first-of-type {
-  margin-top: 0;
-}
-
-/* Each question + input, replacing the old wrap-everything-in-<label> pattern */
-.field {
-  margin-bottom: 20px;
-}
-
-.field label {
-  margin-bottom: 0;
-}
-
-.info-link {
-  margin: -8px 0 20px;
-  font-size: 0.9rem;
-}
-
-.info-link a {
-  color: #f59e0b;
-  font-weight: 600;
-  text-decoration: underline;
-}
-

@@ -11,12 +11,12 @@
   <div class="container">
     <h1>Resume NREN Phone Assessment</h1>
     <p class="subtitle">
-      This form was saved earlier. Review the information below and continue when ready.
+      This form was saved earlier. Review the information below, then click Resume Editing to continue on the full form.
     </p>
 
     <form id="siteForm">
 
-    <section class="section">
+    <div class="page" data-page="0">
       <h2>Introduction</h2>
       <div class="field">
         <label for="in_Status">Status</label>
@@ -65,8 +65,61 @@
       </div>
       <h3>Large Loads</h3>
       <div class="field">
-        <label for="in_HighEnergyUsingItems">High Energy Using Items (Hot Tub, Pool, Sauna, EV Charging, Well Pump, Septic/Sewage Pump, Sump Pump, Air Compressor, Workshop Tools, Ceramic Kiln, RV, Other, None)</label>
-        <input type="text" id="in_HighEnergyUsingItems" name="in_HighEnergyUsingItems">
+        <label>High Energy Using Items</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_0">
+            <input type="checkbox" id="in_HighEnergyUsingItems_0" name="in_HighEnergyUsingItems" value="Hot Tub">
+            <span>Hot Tub</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_1">
+            <input type="checkbox" id="in_HighEnergyUsingItems_1" name="in_HighEnergyUsingItems" value="Pool">
+            <span>Pool</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_2">
+            <input type="checkbox" id="in_HighEnergyUsingItems_2" name="in_HighEnergyUsingItems" value="Sauna">
+            <span>Sauna</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_3">
+            <input type="checkbox" id="in_HighEnergyUsingItems_3" name="in_HighEnergyUsingItems" value="EV Charging">
+            <span>EV Charging</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_4">
+            <input type="checkbox" id="in_HighEnergyUsingItems_4" name="in_HighEnergyUsingItems" value="Well Pump">
+            <span>Well Pump</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_5">
+            <input type="checkbox" id="in_HighEnergyUsingItems_5" name="in_HighEnergyUsingItems" value="Septic/Sewage Pump">
+            <span>Septic/Sewage Pump</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_6">
+            <input type="checkbox" id="in_HighEnergyUsingItems_6" name="in_HighEnergyUsingItems" value="Sump Pump">
+            <span>Sump Pump</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_7">
+            <input type="checkbox" id="in_HighEnergyUsingItems_7" name="in_HighEnergyUsingItems" value="Air Compressor">
+            <span>Air Compressor</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_8">
+            <input type="checkbox" id="in_HighEnergyUsingItems_8" name="in_HighEnergyUsingItems" value="Workshop Tools">
+            <span>Workshop Tools</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_9">
+            <input type="checkbox" id="in_HighEnergyUsingItems_9" name="in_HighEnergyUsingItems" value="Ceramic Kiln">
+            <span>Ceramic Kiln</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_10">
+            <input type="checkbox" id="in_HighEnergyUsingItems_10" name="in_HighEnergyUsingItems" value="RV">
+            <span>RV</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_11">
+            <input type="checkbox" id="in_HighEnergyUsingItems_11" name="in_HighEnergyUsingItems" value="Other">
+            <span>Other</span>
+          </label>
+          <label class="checkbox-option" for="in_HighEnergyUsingItems_12">
+            <input type="checkbox" id="in_HighEnergyUsingItems_12" name="in_HighEnergyUsingItems" value="None">
+            <span>None</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_OtherLargeLoads">Other large loads</label>
@@ -76,211 +129,545 @@
         <label for="in_ShiftLoadsOffPeak">Are you able to shift use of high energy using items to off peak hours?</label>
         <input type="text" id="in_ShiftLoadsOffPeak" name="in_ShiftLoadsOffPeak">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="1">
       <h2>HVAC</h2>
       <h3>Primary Heating</h3>
       <div class="field">
         <label for="in_PrimaryHeatingType">What is the home’s primary heating type?</label>
-        <input type="text" id="in_PrimaryHeatingType" name="in_PrimaryHeatingType">
+        <select id="in_PrimaryHeatingType" name="in_PrimaryHeatingType">
+          <option value="">--select an item--</option>
+          <option value="Forced Air">Forced Air</option>
+          <option value="Heat Pump - See Cooling System">Heat Pump - See Cooling System</option>
+          <option value="Fireplace/insert">Fireplace/insert</option>
+          <option value="Woodstove">Woodstove</option>
+          <option value="Hydronic: Floor, Radiator, Baseboard">Hydronic: Floor, Radiator, Baseboard</option>
+          <option value="Portable Space Heater">Portable Space Heater</option>
+          <option value="Electric: Floor, Panel, Baseboard">Electric: Floor, Panel, Baseboard</option>
+          <option value="Ductless Room/Wall/Floor">Ductless Room/Wall/Floor</option>
+          <option value="Unknown">Unknown</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingFuel">What fuel does the primary heating system use?</label>
-        <input type="text" id="in_PrimaryHeatingFuel" name="in_PrimaryHeatingFuel">
+        <select id="in_PrimaryHeatingFuel" name="in_PrimaryHeatingFuel">
+          <option value="">--select an item--</option>
+          <option value="Electric">Electric</option>
+          <option value="Natural Gas">Natural Gas</option>
+          <option value="Propane">Propane</option>
+          <option value="Oil">Oil</option>
+          <option value="Kerosene">Kerosene</option>
+          <option value="Wood">Wood</option>
+          <option value="Wood Pellet">Wood Pellet</option>
+          <option value="Unknown">Unknown</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingAge">How old is the primary heating system?</label>
-        <input type="text" id="in_PrimaryHeatingAge" name="in_PrimaryHeatingAge">
+        <select id="in_PrimaryHeatingAge" name="in_PrimaryHeatingAge">
+          <option value="">--select an item--</option>
+          <option value="0-9 years">0-9 years</option>
+          <option value="10-15 years">10-15 years</option>
+          <option value="16-20 years">16-20 years</option>
+          <option value="&gt;20 years">&gt;20 years</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingEfficiency">What is the efficiency level of the primary heating system?</label>
-        <input type="text" id="in_PrimaryHeatingEfficiency" name="in_PrimaryHeatingEfficiency">
+        <select id="in_PrimaryHeatingEfficiency" name="in_PrimaryHeatingEfficiency">
+          <option value="Furnace, Below Std: &lt;78% AFUE">Furnace, Below Std: &lt;78% AFUE</option>
+          <option value="Furnace/ Boiler, Std: 80-83% AFUE">Furnace/ Boiler, Std: 80-83% AFUE</option>
+          <option value="Furnace/ Boiler, Condensing: 90-98% AFUE">Furnace/ Boiler, Condensing: 90-98% AFUE</option>
+          <option value="Electric Resistance, Std">Electric Resistance, Std</option>
+          <option value="Woodstove, STD">Woodstove, STD</option>
+          <option value="Woodstove, EPA Certified">Woodstove, EPA Certified</option>
+          <option value="Fireplace insert">Fireplace insert</option>
+          <option value="Open fireplace">Open fireplace</option>
+          <option value="Other- See Notes">Other- See Notes</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingDuctwork">Does the primary heating system use ductwork?</label>
-        <input type="text" id="in_PrimaryHeatingDuctwork" name="in_PrimaryHeatingDuctwork">
+        <select id="in_PrimaryHeatingDuctwork" name="in_PrimaryHeatingDuctwork">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingDuctInsulation">What is the condition of the primary heating duct insulation?</label>
-        <input type="text" id="in_PrimaryHeatingDuctInsulation" name="in_PrimaryHeatingDuctInsulation">
+        <select id="in_PrimaryHeatingDuctInsulation" name="in_PrimaryHeatingDuctInsulation">
+          <option value="">--select an item--</option>
+          <option value="None">None</option>
+          <option value="Damaged">Damaged</option>
+          <option value="Unknown">Unknown</option>
+          <option value="Below R4.2">Below R4.2</option>
+          <option value="Above R4.3">Above R4.3</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingDuctSealing">What is the condition of the primary heating duct sealing?</label>
-        <input type="text" id="in_PrimaryHeatingDuctSealing" name="in_PrimaryHeatingDuctSealing">
+        <select id="in_PrimaryHeatingDuctSealing" name="in_PrimaryHeatingDuctSealing">
+          <option value="">--select an item--</option>
+          <option value="Suspected leakage">Suspected leakage</option>
+          <option value="Observed leakage">Observed leakage</option>
+          <option value="Sealed (&lt;10% leakage)">Sealed (&lt;10% leakage)</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingThermostatType">What type of thermostat controls the primary heating system?</label>
-        <input type="text" id="in_PrimaryHeatingThermostatType" name="in_PrimaryHeatingThermostatType">
+        <select id="in_PrimaryHeatingThermostatType" name="in_PrimaryHeatingThermostatType">
+          <option value="">--select an item--</option>
+          <option value="Programmable">Programmable</option>
+          <option value="Smart">Smart</option>
+          <option value="Analog">Analog</option>
+          <option value="None">None</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_PrimaryHeatingSetpoint">What is the primary heating setpoint?</label>
-        <input type="text" id="in_PrimaryHeatingSetpoint" name="in_PrimaryHeatingSetpoint">
+        <input type="number" step="any" id="in_PrimaryHeatingSetpoint" name="in_PrimaryHeatingSetpoint">
       </div>
-      <div class="field">
-        <label for="in_HasSecondaryHeating">Is there a secondary heating system in the home? (Yes/No)</label>
-        <input type="text" id="in_HasSecondaryHeating" name="in_HasSecondaryHeating" required>
+      <div class="field checkbox-field">
+        <label class="checkbox-label" for="in_HasSecondaryHeating">
+          <input type="checkbox" id="in_HasSecondaryHeating" name="in_HasSecondaryHeating" value="true" required>
+          <span>Is there a secondary heating system in the home?</span>
+        </label>
       </div>
-      <h3>Secondary Heating</h3>
-      <div class="field">
-        <label for="in_SecondaryHeatingType">What is the home’s secondary heating type?</label>
-        <input type="text" id="in_SecondaryHeatingType" name="in_SecondaryHeatingType">
+      <div class="conditional" data-depends-on="in_HasSecondaryHeating">
+        <h3>Secondary Heating</h3>
+        <div class="field">
+          <label for="in_SecondaryHeatingType">What is the home’s secondary heating type?</label>
+          <select id="in_SecondaryHeatingType" name="in_SecondaryHeatingType">
+            <option value="">--select an item--</option>
+            <option value="Forced Air">Forced Air</option>
+            <option value="Heat Pump - See Cooling System">Heat Pump - See Cooling System</option>
+            <option value="Fireplace/insert">Fireplace/insert</option>
+            <option value="Woodstove">Woodstove</option>
+            <option value="Hydronic: Floor, Radiator, Baseboard">Hydronic: Floor, Radiator, Baseboard</option>
+            <option value="Portable Space Heater">Portable Space Heater</option>
+            <option value="Electric: Floor, Panel, Baseboard">Electric: Floor, Panel, Baseboard</option>
+            <option value="Ductless Room/Wall/Floor">Ductless Room/Wall/Floor</option>
+            <option value="Unknown">Unknown</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingFuel">What fuel does the secondary heating system use?</label>
+          <select id="in_SecondaryHeatingFuel" name="in_SecondaryHeatingFuel">
+            <option value="">--select an item--</option>
+            <option value="Electric">Electric</option>
+            <option value="Natural Gas">Natural Gas</option>
+            <option value="Propane">Propane</option>
+            <option value="Oil">Oil</option>
+            <option value="Kerosene">Kerosene</option>
+            <option value="Wood">Wood</option>
+            <option value="Wood Pellet">Wood Pellet</option>
+            <option value="Unknown">Unknown</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingAge">How old is the secondary heating system?</label>
+          <select id="in_SecondaryHeatingAge" name="in_SecondaryHeatingAge">
+            <option value="">--select an item--</option>
+            <option value="0-9 years">0-9 years</option>
+            <option value="10-15 years">10-15 years</option>
+            <option value="16-20 years">16-20 years</option>
+            <option value="&gt;20 years">&gt;20 years</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingEfficiency">What is the efficiency level of the secondary heating system?</label>
+          <select id="in_SecondaryHeatingEfficiency" name="in_SecondaryHeatingEfficiency">
+            <option value="Furnace, Below Std: &lt;78% AFUE">Furnace, Below Std: &lt;78% AFUE</option>
+            <option value="Furnace/ Boiler, Std: 80-83% AFUE">Furnace/ Boiler, Std: 80-83% AFUE</option>
+            <option value="Furnace/ Boiler, Condensing: 90-98% AFUE">Furnace/ Boiler, Condensing: 90-98% AFUE</option>
+            <option value="Electric Resistance, Std">Electric Resistance, Std</option>
+            <option value="Woodstove, STD">Woodstove, STD</option>
+            <option value="Woodstove, EPA Certified">Woodstove, EPA Certified</option>
+            <option value="Fireplace insert">Fireplace insert</option>
+            <option value="Open fireplace">Open fireplace</option>
+            <option value="Other- See Notes">Other- See Notes</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingDuctwork">Does the secondary heating system use ductwork?</label>
+          <select id="in_SecondaryHeatingDuctwork" name="in_SecondaryHeatingDuctwork">
+            <option value="">--select an item--</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingDuctInsulation">What is the condition of the secondary heating duct insulation?</label>
+          <select id="in_SecondaryHeatingDuctInsulation" name="in_SecondaryHeatingDuctInsulation">
+            <option value="">--select an item--</option>
+            <option value="None">None</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Unknown">Unknown</option>
+            <option value="Below R4.2">Below R4.2</option>
+            <option value="Above R4.3">Above R4.3</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingDuctSealing">What is the condition of the secondary heating duct sealing?</label>
+          <select id="in_SecondaryHeatingDuctSealing" name="in_SecondaryHeatingDuctSealing">
+            <option value="">--select an item--</option>
+            <option value="Suspected leakage">Suspected leakage</option>
+            <option value="Observed leakage">Observed leakage</option>
+            <option value="Sealed (&lt;10% leakage)">Sealed (&lt;10% leakage)</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingThermostatType">What type of thermostat controls the secondary heating system?</label>
+          <select id="in_SecondaryHeatingThermostatType" name="in_SecondaryHeatingThermostatType">
+            <option value="">--select an item--</option>
+            <option value="Programmable">Programmable</option>
+            <option value="Smart">Smart</option>
+            <option value="Analog">Analog</option>
+            <option value="None">None</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_SecondaryHeatingSetpoint">What is the secondary heating setpoint?</label>
+          <input type="number" step="any" id="in_SecondaryHeatingSetpoint" name="in_SecondaryHeatingSetpoint">
+        </div>
       </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingFuel">What fuel does the secondary heating system use?</label>
-        <input type="text" id="in_SecondaryHeatingFuel" name="in_SecondaryHeatingFuel">
+      <div class="field checkbox-field">
+        <label class="checkbox-label" for="in_HasTertiaryHeating">
+          <input type="checkbox" id="in_HasTertiaryHeating" name="in_HasTertiaryHeating" value="true" required>
+          <span>Is there a tertiary heating system in the home?</span>
+        </label>
       </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingAge">How old is the secondary heating system?</label>
-        <input type="text" id="in_SecondaryHeatingAge" name="in_SecondaryHeatingAge">
-      </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingEfficiency">What is the efficiency level of the secondary heating system?</label>
-        <input type="text" id="in_SecondaryHeatingEfficiency" name="in_SecondaryHeatingEfficiency">
-      </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingDuctwork">Does the secondary heating system use ductwork?</label>
-        <input type="text" id="in_SecondaryHeatingDuctwork" name="in_SecondaryHeatingDuctwork">
-      </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingDuctInsulation">What is the condition of the secondary heating duct insulation?</label>
-        <input type="text" id="in_SecondaryHeatingDuctInsulation" name="in_SecondaryHeatingDuctInsulation">
-      </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingDuctSealing">What is the condition of the secondary heating duct sealing?</label>
-        <input type="text" id="in_SecondaryHeatingDuctSealing" name="in_SecondaryHeatingDuctSealing">
-      </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingThermostatType">What type of thermostat controls the secondary heating system?</label>
-        <input type="text" id="in_SecondaryHeatingThermostatType" name="in_SecondaryHeatingThermostatType">
-      </div>
-      <div class="field">
-        <label for="in_SecondaryHeatingSetpoint">What is the secondary heating setpoint?</label>
-        <input type="text" id="in_SecondaryHeatingSetpoint" name="in_SecondaryHeatingSetpoint">
-      </div>
-      <div class="field">
-        <label for="in_HasTertiaryHeating">Is there a tertiary heating system in the home? (Yes/No)</label>
-        <input type="text" id="in_HasTertiaryHeating" name="in_HasTertiaryHeating" required>
-      </div>
-      <h3>Tertiary Heating</h3>
-      <div class="field">
-        <label for="in_TertiaryHeatingType">What is the home’s tertiary heating type?</label>
-        <input type="text" id="in_TertiaryHeatingType" name="in_TertiaryHeatingType">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingFuel">What fuel does the tertiary heating system use?</label>
-        <input type="text" id="in_TertiaryHeatingFuel" name="in_TertiaryHeatingFuel">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingAge">How old is the tertiary heating system?</label>
-        <input type="text" id="in_TertiaryHeatingAge" name="in_TertiaryHeatingAge">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingEfficiency">What is the efficiency level of the tertiary heating system?</label>
-        <input type="text" id="in_TertiaryHeatingEfficiency" name="in_TertiaryHeatingEfficiency">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingDuctwork">Does the tertiary heating system use ductwork?</label>
-        <input type="text" id="in_TertiaryHeatingDuctwork" name="in_TertiaryHeatingDuctwork">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingDuctInsulation">What is the condition of the tertiary heating duct insulation?</label>
-        <input type="text" id="in_TertiaryHeatingDuctInsulation" name="in_TertiaryHeatingDuctInsulation">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingDuctSealing">What is the condition of the tertiary heating duct sealing?</label>
-        <input type="text" id="in_TertiaryHeatingDuctSealing" name="in_TertiaryHeatingDuctSealing">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingThermostatType">What type of thermostat controls the tertiary heating system?</label>
-        <input type="text" id="in_TertiaryHeatingThermostatType" name="in_TertiaryHeatingThermostatType">
-      </div>
-      <div class="field">
-        <label for="in_TertiaryHeatingSetpoint">What is the tertiary heating setpoint?</label>
-        <input type="text" id="in_TertiaryHeatingSetpoint" name="in_TertiaryHeatingSetpoint">
+      <div class="conditional" data-depends-on="in_HasTertiaryHeating">
+        <h3>Tertiary Heating</h3>
+        <div class="field">
+          <label for="in_TertiaryHeatingType">What is the home’s tertiary heating type?</label>
+          <select id="in_TertiaryHeatingType" name="in_TertiaryHeatingType">
+            <option value="">--select an item--</option>
+            <option value="Forced Air">Forced Air</option>
+            <option value="Heat Pump - See Cooling System">Heat Pump - See Cooling System</option>
+            <option value="Fireplace/insert">Fireplace/insert</option>
+            <option value="Woodstove">Woodstove</option>
+            <option value="Hydronic: Floor, Radiator, Baseboard">Hydronic: Floor, Radiator, Baseboard</option>
+            <option value="Portable Space Heater">Portable Space Heater</option>
+            <option value="Electric: Floor, Panel, Baseboard">Electric: Floor, Panel, Baseboard</option>
+            <option value="Ductless Room/Wall/Floor">Ductless Room/Wall/Floor</option>
+            <option value="Unknown">Unknown</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingFuel">What fuel does the tertiary heating system use?</label>
+          <select id="in_TertiaryHeatingFuel" name="in_TertiaryHeatingFuel">
+            <option value="">--select an item--</option>
+            <option value="Electric">Electric</option>
+            <option value="Natural Gas">Natural Gas</option>
+            <option value="Propane">Propane</option>
+            <option value="Oil">Oil</option>
+            <option value="Kerosene">Kerosene</option>
+            <option value="Wood">Wood</option>
+            <option value="Wood Pellet">Wood Pellet</option>
+            <option value="Unknown">Unknown</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingAge">How old is the tertiary heating system?</label>
+          <select id="in_TertiaryHeatingAge" name="in_TertiaryHeatingAge">
+            <option value="">--select an item--</option>
+            <option value="0-9 years">0-9 years</option>
+            <option value="10-15 years">10-15 years</option>
+            <option value="16-20 years">16-20 years</option>
+            <option value="&gt;20 years">&gt;20 years</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingEfficiency">What is the efficiency level of the tertiary heating system?</label>
+          <select id="in_TertiaryHeatingEfficiency" name="in_TertiaryHeatingEfficiency">
+            <option value="Furnace, Below Std: &lt;78% AFUE">Furnace, Below Std: &lt;78% AFUE</option>
+            <option value="Furnace/ Boiler, Std: 80-83% AFUE">Furnace/ Boiler, Std: 80-83% AFUE</option>
+            <option value="Furnace/ Boiler, Condensing: 90-98% AFUE">Furnace/ Boiler, Condensing: 90-98% AFUE</option>
+            <option value="Electric Resistance, Std">Electric Resistance, Std</option>
+            <option value="Woodstove, STD">Woodstove, STD</option>
+            <option value="Woodstove, EPA Certified">Woodstove, EPA Certified</option>
+            <option value="Fireplace insert">Fireplace insert</option>
+            <option value="Open fireplace">Open fireplace</option>
+            <option value="Other- See Notes">Other- See Notes</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingDuctwork">Does the tertiary heating system use ductwork?</label>
+          <select id="in_TertiaryHeatingDuctwork" name="in_TertiaryHeatingDuctwork">
+            <option value="">--select an item--</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingDuctInsulation">What is the condition of the tertiary heating duct insulation?</label>
+          <select id="in_TertiaryHeatingDuctInsulation" name="in_TertiaryHeatingDuctInsulation">
+            <option value="">--select an item--</option>
+            <option value="None">None</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Unknown">Unknown</option>
+            <option value="Below R4.2">Below R4.2</option>
+            <option value="Above R4.3">Above R4.3</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingDuctSealing">What is the condition of the tertiary heating duct sealing?</label>
+          <select id="in_TertiaryHeatingDuctSealing" name="in_TertiaryHeatingDuctSealing">
+            <option value="">--select an item--</option>
+            <option value="Suspected leakage">Suspected leakage</option>
+            <option value="Observed leakage">Observed leakage</option>
+            <option value="Sealed (&lt;10% leakage)">Sealed (&lt;10% leakage)</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingThermostatType">What type of thermostat controls the tertiary heating system?</label>
+          <select id="in_TertiaryHeatingThermostatType" name="in_TertiaryHeatingThermostatType">
+            <option value="">--select an item--</option>
+            <option value="Programmable">Programmable</option>
+            <option value="Smart">Smart</option>
+            <option value="Analog">Analog</option>
+            <option value="None">None</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in_TertiaryHeatingSetpoint">What is the tertiary heating setpoint?</label>
+          <input type="number" step="any" id="in_TertiaryHeatingSetpoint" name="in_TertiaryHeatingSetpoint">
+        </div>
       </div>
       <h3>Cooling</h3>
-      <div class="field">
-        <label for="Cooling_System">Does the home have a cooling system? (Yes/No)</label>
-        <input type="text" id="Cooling_System" name="Cooling_System" required>
+      <div class="field checkbox-field">
+        <label class="checkbox-label" for="Cooling_System">
+          <input type="checkbox" id="Cooling_System" name="Cooling_System" value="true" required>
+          <span>Does the home have a cooling system?</span>
+        </label>
       </div>
-      <div class="field">
-        <label for="Cooling_Source">What type of cooling system does the home use?</label>
-        <input type="text" id="Cooling_Source" name="Cooling_Source">
-      </div>
-      <div class="field">
-        <label for="Cooling_Equipment_Age">How old is the cooling equipment?</label>
-        <input type="text" id="Cooling_Equipment_Age" name="Cooling_Equipment_Age">
-      </div>
-      <div class="field">
-        <label for="Cooling_System_Efficiency">What is the efficiency level of the cooling system?</label>
-        <input type="text" id="Cooling_System_Efficiency" name="Cooling_System_Efficiency">
-      </div>
-      <div class="field">
-        <label for="Cooling_Thermostat_Type">What type of thermostat controls the cooling system?</label>
-        <input type="text" id="Cooling_Thermostat_Type" name="Cooling_Thermostat_Type">
-      </div>
-      <div class="field">
-        <label for="Cooling_Setpoint2">What is the cooling setpoint?</label>
-        <input type="text" id="Cooling_Setpoint2" name="Cooling_Setpoint2">
-      </div>
-      <div class="field">
-        <label for="Cooling_Frequency">How often is cooling used in the home?</label>
-        <input type="text" id="Cooling_Frequency" name="Cooling_Frequency">
+      <div class="conditional" data-depends-on="Cooling_System">
+        <div class="field">
+          <label for="Cooling_Source">What type of cooling system does the home use?</label>
+          <select id="Cooling_Source" name="Cooling_Source">
+            <option value="Central AC">Central AC</option>
+            <option value="Portable/Window AC">Portable/Window AC</option>
+            <option value="Whole House Fan">Whole House Fan</option>
+            <option value="Evaporative Cooler">Evaporative Cooler</option>
+            <option value="Heat Pump - Ducted">Heat Pump - Ducted</option>
+            <option value="Heat Pump - Ductless">Heat Pump - Ductless</option>
+            <option value="Unknown">Unknown</option>
+            <option value="None">None</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="Cooling_Equipment_Age">How old is the cooling equipment?</label>
+          <select id="Cooling_Equipment_Age" name="Cooling_Equipment_Age">
+            <option value="0-9 years">0-9 years</option>
+            <option value="10-15 years">10-15 years</option>
+            <option value="16-20 years">16-20 years</option>
+            <option value="&gt;20 years">&gt;20 years</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="Cooling_System_Efficiency">What is the efficiency level of the cooling system?</label>
+          <select id="Cooling_System_Efficiency" name="Cooling_System_Efficiency">
+            <option value="Central, Packaged, EnergyStar: ≥ 15.2 SEER2/ ≥ 11.5 EER2 ≥ 15.7 SEER">Central, Packaged, EnergyStar: ≥ 15.2 SEER2/ ≥ 11.5 EER2 ≥ 15.7 SEER</option>
+            <option value="Central, Packaged, Std: &lt; 15.2 SEER2/ &lt; 11.5 EER2 or &lt; 15.7 SEER">Central, Packaged, Std: &lt; 15.2 SEER2/ &lt; 11.5 EER2 or &lt; 15.7 SEER</option>
+            <option value="Central, Split, EnergyStar: ≥ 15.2 SEER2/ ≥ 12.0 EER2 or ≥ 15.7 SEER">Central, Split, EnergyStar: ≥ 15.2 SEER2/ ≥ 12.0 EER2 or ≥ 15.7 SEER</option>
+            <option value="Central, Split, Std: &lt; 15.2 SEER2/ &lt; 12.0 EER2 or &lt; 15.7 SEER">Central, Split, Std: &lt; 15.2 SEER2/ &lt; 12.0 EER2 or &lt; 15.7 SEER</option>
+            <option value="Evaporative Cooler, One-stage, Std">Evaporative Cooler, One-stage, Std</option>
+            <option value="Evaporative Cooler, Two-stage, High">Evaporative Cooler, Two-stage, High</option>
+            <option value="Heat Pump, Packaged, EnergyStar: ≥ 7.2 HSPF2/ 15.2 SEER2 or ≥ 8.3 HSPF/ 15.7 SEER">Heat Pump, Packaged, EnergyStar: ≥ 7.2 HSPF2/ 15.2 SEER2 or ≥ 8.3 HSPF/ 15.7 SEER</option>
+            <option value="Heat Pump, Packaged, Std: &lt; 7.2 HSPF2/ 15.2 SEER2 or &lt; 8.3 HSPF/ 15.7 SEER">Heat Pump, Packaged, Std: &lt; 7.2 HSPF2/ 15.2 SEER2 or &lt; 8.3 HSPF/ 15.7 SEER</option>
+            <option value="Heat Pump, Split, EnergyStar: ≥ 7.8 HSPF2/ 15.2 SEER2 or ≥ 9.0 HSPF/ 15.7 SEER">Heat Pump, Split, EnergyStar: ≥ 7.8 HSPF2/ 15.2 SEER2 or ≥ 9.0 HSPF/ 15.7 SEER</option>
+            <option value="Heat Pump, Split, Std: &lt; 7.8 HSPF2/ 15.2 SEER2 or &lt; 9.0 HSPF/ 15.7 SEER">Heat Pump, Split, Std: &lt; 7.8 HSPF2/ 15.2 SEER2 or &lt; 9.0 HSPF/ 15.7 SEER</option>
+            <option value="Window Mount/ Portable, EnergyStar">Window Mount/ Portable, EnergyStar</option>
+            <option value="Window Mount/ Portable, Std">Window Mount/ Portable, Std</option>
+            <option value="Whole House Fan, Std">Whole House Fan, Std</option>
+            <option value="Other- See Notes">Other- See Notes</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="Cooling_Thermostat_Type">What type of thermostat controls the cooling system?</label>
+          <select id="Cooling_Thermostat_Type" name="Cooling_Thermostat_Type">
+            <option value="Programmable">Programmable</option>
+            <option value="Smart">Smart</option>
+            <option value="Analog">Analog</option>
+            <option value="None">None</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="Cooling_Setpoint2">What is the cooling setpoint?</label>
+          <input type="number" step="any" id="Cooling_Setpoint2" name="Cooling_Setpoint2">
+        </div>
+        <div class="field">
+          <label for="Cooling_Frequency">How often is cooling used in the home?</label>
+          <input type="text" id="Cooling_Frequency" name="Cooling_Frequency">
+        </div>
       </div>
       <h3>General HVAC</h3>
       <div class="field">
         <label for="Uses_Electric_Space_Heaters">Do you use electric space heaters to supplement heat in your home?</label>
-        <input type="text" id="Uses_Electric_Space_Heaters" name="Uses_Electric_Space_Heaters">
+        <select id="Uses_Electric_Space_Heaters" name="Uses_Electric_Space_Heaters">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="Adjusts_Setpoints_When_Away">Do you reduce your heat setpoint and increase your cooling setpoint when you are not home?</label>
-        <input type="text" id="Adjusts_Setpoints_When_Away" name="Adjusts_Setpoints_When_Away">
+        <select id="Adjusts_Setpoints_When_Away" name="Adjusts_Setpoints_When_Away">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="Uneven_Heating_Or_Cooling">Do you have uneven heating or cooling throughout your home?</label>
-        <input type="text" id="Uneven_Heating_Or_Cooling" name="Uneven_Heating_Or_Cooling">
+        <select id="Uneven_Heating_Or_Cooling" name="Uneven_Heating_Or_Cooling">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
-        <label for="Maintains_Cleans_HVAC">Do you maintain and clean the filters and vents on your HVAC systems? (AC filter, Furnace Filter, Furnace Registers)</label>
-        <input type="text" id="Maintains_Cleans_HVAC" name="Maintains_Cleans_HVAC">
+        <label>Do you maintain and clean the filters and vents on your HVAC systems?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="Maintains_Cleans_HVAC_0">
+            <input type="checkbox" id="Maintains_Cleans_HVAC_0" name="Maintains_Cleans_HVAC" value="Furnace Filter">
+            <span>Furnace Filter</span>
+          </label>
+          <label class="checkbox-option" for="Maintains_Cleans_HVAC_1">
+            <input type="checkbox" id="Maintains_Cleans_HVAC_1" name="Maintains_Cleans_HVAC" value="Furnace Registers">
+            <span>Furnace Registers</span>
+          </label>
+          <label class="checkbox-option" for="Maintains_Cleans_HVAC_2">
+            <input type="checkbox" id="Maintains_Cleans_HVAC_2" name="Maintains_Cleans_HVAC" value="AC filter">
+            <span>AC filter</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_HVACNotes">HVAC Notes</label>
         <input type="text" id="in_HVACNotes" name="in_HVACNotes">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="2">
       <h2>Water</h2>
       <h3>Water Heating</h3>
       <div class="field">
         <label for="in_DHWType">What type of domestic hot water system does the home have?</label>
-        <input type="text" id="in_DHWType" name="in_DHWType">
+        <select id="in_DHWType" name="in_DHWType">
+          <option value="">--select an item--</option>
+          <option value="Boiler">Boiler</option>
+          <option value="Heat Pump - Hybrid">Heat Pump - Hybrid</option>
+          <option value="Heat Pump Only">Heat Pump Only</option>
+          <option value="On-Demand">On-Demand</option>
+          <option value="Solar Thermal - Elec Backup">Solar Thermal - Elec Backup</option>
+          <option value="Solar Thermal- Gas Backup">Solar Thermal- Gas Backup</option>
+          <option value="Storage">Storage</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DHWFuel">What fuel does the domestic hot water system use?</label>
-        <input type="text" id="in_DHWFuel" name="in_DHWFuel">
+        <select id="in_DHWFuel" name="in_DHWFuel">
+          <option value="">--select an item--</option>
+          <option value="Electric">Electric</option>
+          <option value="Natural Gas">Natural Gas</option>
+          <option value="Propane">Propane</option>
+          <option value="Solar">Solar</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DHWCapacity">What is the domestic hot water system capacity?</label>
-        <input type="text" id="in_DHWCapacity" name="in_DHWCapacity">
+        <select id="in_DHWCapacity" name="in_DHWCapacity">
+          <option value="">--select an item--</option>
+          <option value="None">None</option>
+          <option value="&lt;30 gallons">&lt;30 gallons</option>
+          <option value="30 gallons">30 gallons</option>
+          <option value="40 gallons">40 gallons</option>
+          <option value="50 gallons">50 gallons</option>
+          <option value="&gt;50 gallons">&gt;50 gallons</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DHWAge">How old is the domestic hot water system?</label>
-        <input type="text" id="in_DHWAge" name="in_DHWAge">
+        <select id="in_DHWAge" name="in_DHWAge">
+          <option value="">--select an item--</option>
+          <option value="0-5 years">0-5 years</option>
+          <option value="6-10 years">6-10 years</option>
+          <option value="11-13 years">11-13 years</option>
+          <option value="&gt;14 years">&gt;14 years</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DHWEfficiency">What is the efficiency level of the domestic hot water system?</label>
-        <input type="text" id="in_DHWEfficiency" name="in_DHWEfficiency">
+        <select id="in_DHWEfficiency" name="in_DHWEfficiency">
+          <option value="">--select an item--</option>
+          <option value="Gas, Std: 0.6- 0.9 UEF">Gas, Std: 0.6- 0.9 UEF</option>
+          <option value="Gas, Condensing: 0.91- 0.98 UEF">Gas, Condensing: 0.91- 0.98 UEF</option>
+          <option value="Electric Resistance, Std">Electric Resistance, Std</option>
+          <option value="Heat Pump, Std: &lt; 3.30 UEF or 120 volt/ Split &lt; 2.20 UEF">Heat Pump, Std: &lt; 3.30 UEF or 120 volt/ Split &lt; 2.20 UEF</option>
+          <option value="Heat Pump, EnergyStar: &gt; 3.30 UEF or 120 volt/ Split &gt; 2.20 UEF">Heat Pump, EnergyStar: &gt; 3.30 UEF or 120 volt/ Split &gt; 2.20 UEF</option>
+          <option value="Solar, Std: Elec Backup SUEF &lt;3.0, Gas Backup SUEF &lt; 1.8">Solar, Std: Elec Backup SUEF &lt;3.0, Gas Backup SUEF &lt; 1.8</option>
+          <option value="Solar, EnergyStar: Elec Backup SUEF ≥3.0, Gas Backup SUEF ≥ 1.8">Solar, EnergyStar: Elec Backup SUEF ≥3.0, Gas Backup SUEF ≥ 1.8</option>
+          <option value="Other- See Notes">Other- See Notes</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DHWTempSetpoint">What is the domestic hot water temperature setpoint?</label>
-        <input type="text" id="in_DHWTempSetpoint" name="in_DHWTempSetpoint">
+        <input type="number" step="any" id="in_DHWTempSetpoint" name="in_DHWTempSetpoint">
       </div>
       <div class="field">
-        <label for="in_HotWaterPipeInsulation">What is the condition of the hot water pipe insulation?</label>
-        <input type="text" id="in_HotWaterPipeInsulation" name="in_HotWaterPipeInsulation">
+        <label>What is the condition of the hot water pipe insulation?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_HotWaterPipeInsulation_0">
+            <input type="checkbox" id="in_HotWaterPipeInsulation_0" name="in_HotWaterPipeInsulation" value="Insulated">
+            <span>Insulated</span>
+          </label>
+          <label class="checkbox-option" for="in_HotWaterPipeInsulation_1">
+            <input type="checkbox" id="in_HotWaterPipeInsulation_1" name="in_HotWaterPipeInsulation" value="Not-Insulated &amp; Accessible">
+            <span>Not-Insulated &amp; Accessible</span>
+          </label>
+          <label class="checkbox-option" for="in_HotWaterPipeInsulation_2">
+            <input type="checkbox" id="in_HotWaterPipeInsulation_2" name="in_HotWaterPipeInsulation" value="Not-Insulated &amp; Inaccessible">
+            <span>Not-Insulated &amp; Inaccessible</span>
+          </label>
+          <label class="checkbox-option" for="in_HotWaterPipeInsulation_3">
+            <input type="checkbox" id="in_HotWaterPipeInsulation_3" name="in_HotWaterPipeInsulation" value="Unknown">
+            <span>Unknown</span>
+          </label>
+          <label class="checkbox-option" for="in_HotWaterPipeInsulation_4">
+            <input type="checkbox" id="in_HotWaterPipeInsulation_4" name="in_HotWaterPipeInsulation" value="Partially/Poorly">
+            <span>Partially/Poorly</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_FlushesWaterHeaterYearly">Do you flush your water heater tank or the heat exchanger every year?</label>
@@ -294,9 +681,9 @@
         <label for="in_WaterNotes">Water Notes</label>
         <input type="text" id="in_WaterNotes" name="in_WaterNotes">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="3">
       <h2>Envelope</h2>
       <h3>Envelope</h3>
       <div class="field">
@@ -305,15 +692,30 @@
       </div>
       <div class="field">
         <label for="in_AtticAccessWeatherstrippedInsulated">Is the attic access weatherstripped and insulated?</label>
-        <input type="text" id="in_AtticAccessWeatherstrippedInsulated" name="in_AtticAccessWeatherstrippedInsulated">
+        <select id="in_AtticAccessWeatherstrippedInsulated" name="in_AtticAccessWeatherstrippedInsulated">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_AtticInsulated">Is the attic insulated?</label>
-        <input type="text" id="in_AtticInsulated" name="in_AtticInsulated">
+        <select id="in_AtticInsulated" name="in_AtticInsulated">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Partially/Poorly/Damaged">Partially/Poorly/Damaged</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_AtticInsulationRValue">What is the attic insulation R-value?</label>
-        <input type="text" id="in_AtticInsulationRValue" name="in_AtticInsulationRValue">
+        <select id="in_AtticInsulationRValue" name="in_AtticInsulationRValue">
+          <option value="">--select an item--</option>
+          <option value="Unknown">Unknown</option>
+          <option value="R19 or less">R19 or less</option>
+          <option value="R20 or more">R20 or more</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_InsulationInfoNotes">Add any relevant insulation info here. Try to give your best guess for R-value.</label>
@@ -329,27 +731,104 @@
       </div>
       <div class="field">
         <label for="in_FloorInsulated">Is the floor insulated?</label>
-        <input type="text" id="in_FloorInsulated" name="in_FloorInsulated">
+        <select id="in_FloorInsulated" name="in_FloorInsulated">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Partially/Poorly/Damaged">Partially/Poorly/Damaged</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FloorInsulationRValue">What is the floor insulation R-value?</label>
-        <input type="text" id="in_FloorInsulationRValue" name="in_FloorInsulationRValue">
+        <select id="in_FloorInsulationRValue" name="in_FloorInsulationRValue">
+          <option value="">--select an item--</option>
+          <option value="Unknown">Unknown</option>
+          <option value="R12 or less">R12 or less</option>
+          <option value="R13 or more">R13 or more</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_ExteriorWallsInsulated">Are the exterior walls insulated?</label>
-        <input type="text" id="in_ExteriorWallsInsulated" name="in_ExteriorWallsInsulated">
+        <select id="in_ExteriorWallsInsulated" name="in_ExteriorWallsInsulated">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Partially/Poorly/Damaged">Partially/Poorly/Damaged</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
-        <label for="in_WindowType">What type of windows does the home have?</label>
-        <input type="text" id="in_WindowType" name="in_WindowType">
+        <label>What type of windows does the home have?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_WindowType_0">
+            <input type="checkbox" id="in_WindowType_0" name="in_WindowType" value="Metal Frame">
+            <span>Metal Frame</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_1">
+            <input type="checkbox" id="in_WindowType_1" name="in_WindowType" value="Vinyl Frame">
+            <span>Vinyl Frame</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_2">
+            <input type="checkbox" id="in_WindowType_2" name="in_WindowType" value="Wood Frame">
+            <span>Wood Frame</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_3">
+            <input type="checkbox" id="in_WindowType_3" name="in_WindowType" value="All Single Glaze">
+            <span>All Single Glaze</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_4">
+            <input type="checkbox" id="in_WindowType_4" name="in_WindowType" value="All Double Glazed">
+            <span>All Double Glazed</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_5">
+            <input type="checkbox" id="in_WindowType_5" name="in_WindowType" value="&lt;50% Double Glazed">
+            <span>&lt;50% Double Glazed</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_6">
+            <input type="checkbox" id="in_WindowType_6" name="in_WindowType" value="&gt;50% Double Glazed">
+            <span>&gt;50% Double Glazed</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_7">
+            <input type="checkbox" id="in_WindowType_7" name="in_WindowType" value="Triple Glazed">
+            <span>Triple Glazed</span>
+          </label>
+          <label class="checkbox-option" for="in_WindowType_8">
+            <input type="checkbox" id="in_WindowType_8" name="in_WindowType" value="Unknown">
+            <span>Unknown</span>
+          </label>
+        </div>
       </div>
       <div class="field">
-        <label for="in_CeilingPenetrations">Which ceiling penetrations are present?</label>
-        <input type="text" id="in_CeilingPenetrations" name="in_CeilingPenetrations">
+        <label>Which ceiling penetrations are present?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_CeilingPenetrations_0">
+            <input type="checkbox" id="in_CeilingPenetrations_0" name="in_CeilingPenetrations" value="Recessed Can Lights">
+            <span>Recessed Can Lights</span>
+          </label>
+          <label class="checkbox-option" for="in_CeilingPenetrations_1">
+            <input type="checkbox" id="in_CeilingPenetrations_1" name="in_CeilingPenetrations" value="Solar Tubes">
+            <span>Solar Tubes</span>
+          </label>
+          <label class="checkbox-option" for="in_CeilingPenetrations_2">
+            <input type="checkbox" id="in_CeilingPenetrations_2" name="in_CeilingPenetrations" value="Skylights">
+            <span>Skylights</span>
+          </label>
+          <label class="checkbox-option" for="in_CeilingPenetrations_3">
+            <input type="checkbox" id="in_CeilingPenetrations_3" name="in_CeilingPenetrations" value="None">
+            <span>None</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_SkylightsKneeWallInsulation">What is the insulation condition for skylights and knee walls?</label>
-        <input type="text" id="in_SkylightsKneeWallInsulation" name="in_SkylightsKneeWallInsulation">
+        <select id="in_SkylightsKneeWallInsulation" name="in_SkylightsKneeWallInsulation">
+          <option value="">--select an item--</option>
+          <option value="Insulated">Insulated</option>
+          <option value="Not Insulated">Not Insulated</option>
+          <option value="N/A">N/A</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FunctionalFireplaceDamper">Does the home have a functional fireplace damper?</label>
@@ -382,32 +861,63 @@
       </div>
       <div class="field">
         <label for="in_AirFiltrationSystem">What type of air filtration system does the home have?</label>
-        <input type="text" id="in_AirFiltrationSystem" name="in_AirFiltrationSystem">
+        <select id="in_AirFiltrationSystem" name="in_AirFiltrationSystem">
+          <option value="">--select an item--</option>
+          <option value="Standalone">Standalone</option>
+          <option value="Built-in to HVAC">Built-in to HVAC</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_EnvelopeNotes">Envelope Notes</label>
         <input type="text" id="in_EnvelopeNotes" name="in_EnvelopeNotes">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="4">
       <h2>Appliances</h2>
       <h3>Refrigeration</h3>
       <div class="field">
         <label for="in_RefrigeratorAge">What is the age of the primary refrigerator?</label>
-        <input type="text" id="in_RefrigeratorAge" name="in_RefrigeratorAge">
+        <select id="in_RefrigeratorAge" name="in_RefrigeratorAge">
+          <option value="">--select an item--</option>
+          <option value="0-7 years">0-7 years</option>
+          <option value="8-14 years">8-14 years</option>
+          <option value="&gt;14 years">&gt;14 years</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_SecondFridgeFreezerAge">What is the age of the second refrigerator or freezer?</label>
-        <input type="text" id="in_SecondFridgeFreezerAge" name="in_SecondFridgeFreezerAge">
+        <select id="in_SecondFridgeFreezerAge" name="in_SecondFridgeFreezerAge">
+          <option value="">--select an item--</option>
+          <option value="0-7 years">0-7 years</option>
+          <option value="8-14 years">8-14 years</option>
+          <option value="&gt;14 years">&gt;14 years</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_ThirdFridgeFreezerAge">What is the age of the third refrigerator or freezer?</label>
-        <input type="text" id="in_ThirdFridgeFreezerAge" name="in_ThirdFridgeFreezerAge">
+        <select id="in_ThirdFridgeFreezerAge" name="in_ThirdFridgeFreezerAge">
+          <option value="">--select an item--</option>
+          <option value="0-7 years">0-7 years</option>
+          <option value="8-14 years">8-14 years</option>
+          <option value="&gt;14 years">&gt;14 years</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FreezerHasAutoIcemaker">Does your freezer have an automatic icemaker?</label>
-        <input type="text" id="in_FreezerHasAutoIcemaker" name="in_FreezerHasAutoIcemaker">
+        <select id="in_FreezerHasAutoIcemaker" name="in_FreezerHasAutoIcemaker">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_VacuumsFridgeCoilsYearly">Do you vacuum fridge coils every year?</label>
@@ -424,7 +934,14 @@
       <h3>Kitchen</h3>
       <div class="field">
         <label for="in_DishwasherAge">What is the age of the dishwasher?</label>
-        <input type="text" id="in_DishwasherAge" name="in_DishwasherAge">
+        <select id="in_DishwasherAge" name="in_DishwasherAge">
+          <option value="">--select an item--</option>
+          <option value="0-7 years">0-7 years</option>
+          <option value="8-14 years">8-14 years</option>
+          <option value="&gt;14 years">&gt;14 years</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DishwasherUsesHeatedDry">Do you use the heated dry setting on your dishwasher?</label>
@@ -432,40 +949,101 @@
       </div>
       <div class="field">
         <label for="in_RangeCooktopFuelType">What is the fuel type for the range or cooktop?</label>
-        <input type="text" id="in_RangeCooktopFuelType" name="in_RangeCooktopFuelType">
+        <select id="in_RangeCooktopFuelType" name="in_RangeCooktopFuelType">
+          <option value="">--select an item--</option>
+          <option value="Electric">Electric</option>
+          <option value="Natural Gas">Natural Gas</option>
+          <option value="Induction">Induction</option>
+          <option value="Propane">Propane</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_OvenFuelType">What is the fuel type for the oven?</label>
-        <input type="text" id="in_OvenFuelType" name="in_OvenFuelType">
+        <select id="in_OvenFuelType" name="in_OvenFuelType">
+          <option value="">--select an item--</option>
+          <option value="Electric">Electric</option>
+          <option value="Natural Gas">Natural Gas</option>
+          <option value="Induction">Induction</option>
+          <option value="Propane">Propane</option>
+          <option value="Unknown">Unknown</option>
+          <option value="None">None</option>
+        </select>
       </div>
       <h3>Laundry</h3>
       <div class="field">
         <label for="in_ClothesWasherType">What type of clothes washer do you have?</label>
-        <input type="text" id="in_ClothesWasherType" name="in_ClothesWasherType">
+        <select id="in_ClothesWasherType" name="in_ClothesWasherType">
+          <option value="">--select an item--</option>
+          <option value="Top - Standard">Top - Standard</option>
+          <option value="Top-HE">Top-HE</option>
+          <option value="Front - HE">Front - HE</option>
+          <option value="None">None</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_DryerFuelSource">What is the dryer fuel source?</label>
-        <input type="text" id="in_DryerFuelSource" name="in_DryerFuelSource">
+        <select id="in_DryerFuelSource" name="in_DryerFuelSource">
+          <option value="">--select an item--</option>
+          <option value="Electric">Electric</option>
+          <option value="Heat Pump">Heat Pump</option>
+          <option value="Natural Gas">Natural Gas</option>
+          <option value="Propane">Propane</option>
+          <option value="None">None</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
-        <label for="in_LaundryEnergySavingHabits">Are you currently using any energy-saving laundry habits?</label>
-        <input type="text" id="in_LaundryEnergySavingHabits" name="in_LaundryEnergySavingHabits">
+        <label>Are you currently using any energy-saving laundry habits?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_LaundryEnergySavingHabits_0">
+            <input type="checkbox" id="in_LaundryEnergySavingHabits_0" name="in_LaundryEnergySavingHabits" value="Washing with cold water">
+            <span>Washing with cold water</span>
+          </label>
+          <label class="checkbox-option" for="in_LaundryEnergySavingHabits_1">
+            <input type="checkbox" id="in_LaundryEnergySavingHabits_1" name="in_LaundryEnergySavingHabits" value="Using Eco mode/settings">
+            <span>Using Eco mode/settings</span>
+          </label>
+          <label class="checkbox-option" for="in_LaundryEnergySavingHabits_2">
+            <input type="checkbox" id="in_LaundryEnergySavingHabits_2" name="in_LaundryEnergySavingHabits" value="Moisture-sensing settings (Dryer)">
+            <span>Moisture-sensing settings (Dryer)</span>
+          </label>
+          <label class="checkbox-option" for="in_LaundryEnergySavingHabits_3">
+            <input type="checkbox" id="in_LaundryEnergySavingHabits_3" name="in_LaundryEnergySavingHabits" value="Use Clothesline or drying rack">
+            <span>Use Clothesline or drying rack</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_DryerVentExhaustsOutsideClear">Does the dryer vent exhaust to outside, and is the vent clean and clear all the way out?</label>
         <input type="text" id="in_DryerVentExhaustsOutsideClear" name="in_DryerVentExhaustsOutsideClear">
       </div>
       <div class="field">
-        <label for="in_ApplianceMaintenanceItems">Do you maintain and clean the filters and vents on the following appliances? (Dryer Lint Trap, Bath Exhaust Fans, Kitchen Exhaust Fan)</label>
-        <input type="text" id="in_ApplianceMaintenanceItems" name="in_ApplianceMaintenanceItems">
+        <label>Do you maintain and clean the filters and vents on the following appliances?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_ApplianceMaintenanceItems_0">
+            <input type="checkbox" id="in_ApplianceMaintenanceItems_0" name="in_ApplianceMaintenanceItems" value="Dryer Lint Trap">
+            <span>Dryer Lint Trap</span>
+          </label>
+          <label class="checkbox-option" for="in_ApplianceMaintenanceItems_1">
+            <input type="checkbox" id="in_ApplianceMaintenanceItems_1" name="in_ApplianceMaintenanceItems" value="Bath Exhaust Fans">
+            <span>Bath Exhaust Fans</span>
+          </label>
+          <label class="checkbox-option" for="in_ApplianceMaintenanceItems_2">
+            <input type="checkbox" id="in_ApplianceMaintenanceItems_2" name="in_ApplianceMaintenanceItems" value="Kitchen Exhaust Fan">
+            <span>Kitchen Exhaust Fan</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_AppliancesNotes">Appliances Notes</label>
         <input type="text" id="in_AppliancesNotes" name="in_AppliancesNotes">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="5">
       <h2>Safety</h2>
       <h3>Safety &amp; Resilience</h3>
       <div class="field">
@@ -478,11 +1056,49 @@
       </div>
       <div class="field">
         <label for="in_ReliesOnElectricMedicalEquipment">Does anyone in your household rely on electric medical equipment, such as a CPAP machine?</label>
-        <input type="text" id="in_ReliesOnElectricMedicalEquipment" name="in_ReliesOnElectricMedicalEquipment">
+        <select id="in_ReliesOnElectricMedicalEquipment" name="in_ReliesOnElectricMedicalEquipment">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unknown">Unknown</option>
+        </select>
       </div>
       <div class="field">
-        <label for="in_BackupPowerSources">What backup power sources do you have?</label>
-        <input type="text" id="in_BackupPowerSources" name="in_BackupPowerSources">
+        <label>What backup power sources do you have?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_BackupPowerSources_0">
+            <input type="checkbox" id="in_BackupPowerSources_0" name="in_BackupPowerSources" value="Generator">
+            <span>Generator</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_1">
+            <input type="checkbox" id="in_BackupPowerSources_1" name="in_BackupPowerSources" value="Large home battery">
+            <span>Large home battery</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_2">
+            <input type="checkbox" id="in_BackupPowerSources_2" name="in_BackupPowerSources" value="Portable power station">
+            <span>Portable power station</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_3">
+            <input type="checkbox" id="in_BackupPowerSources_3" name="in_BackupPowerSources" value="Small cellphone power bank">
+            <span>Small cellphone power bank</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_4">
+            <input type="checkbox" id="in_BackupPowerSources_4" name="in_BackupPowerSources" value="Electric Vehicle">
+            <span>Electric Vehicle</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_5">
+            <input type="checkbox" id="in_BackupPowerSources_5" name="in_BackupPowerSources" value="Other">
+            <span>Other</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_6">
+            <input type="checkbox" id="in_BackupPowerSources_6" name="in_BackupPowerSources" value="None">
+            <span>None</span>
+          </label>
+          <label class="checkbox-option" for="in_BackupPowerSources_7">
+            <input type="checkbox" id="in_BackupPowerSources_7" name="in_BackupPowerSources" value="Unknown">
+            <span>Unknown</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_SignedUpForEmergencyAlerts">Are you signed up to receive emergency alerts?</label>
@@ -500,9 +1116,9 @@
         <label for="in_SafetyNotes">Safety Notes</label>
         <input type="text" id="in_SafetyNotes" name="in_SafetyNotes">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="6">
       <h2>Lighting</h2>
       <h3>Plug Load &amp; Lighting</h3>
       <div class="field">
@@ -510,24 +1126,75 @@
         <input type="text" id="in_HasNonLedLighting" name="in_HasNonLedLighting">
       </div>
       <div class="field">
-        <label for="in_LightingLoadReductionActions">Do you do any of the following to reduce lighting loads?</label>
-        <input type="text" id="in_LightingLoadReductionActions" name="in_LightingLoadReductionActions">
+        <label>Do you do any of the following to reduce lighting loads?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_LightingLoadReductionActions_0">
+            <input type="checkbox" id="in_LightingLoadReductionActions_0" name="in_LightingLoadReductionActions" value="Use motion sensors or timers">
+            <span>Use motion sensors or timers</span>
+          </label>
+          <label class="checkbox-option" for="in_LightingLoadReductionActions_1">
+            <input type="checkbox" id="in_LightingLoadReductionActions_1" name="in_LightingLoadReductionActions" value="Use task lighting instead of overhead">
+            <span>Use task lighting instead of overhead</span>
+          </label>
+          <label class="checkbox-option" for="in_LightingLoadReductionActions_2">
+            <input type="checkbox" id="in_LightingLoadReductionActions_2" name="in_LightingLoadReductionActions" value="Use smart bulbs">
+            <span>Use smart bulbs</span>
+          </label>
+          <label class="checkbox-option" for="in_LightingLoadReductionActions_3">
+            <input type="checkbox" id="in_LightingLoadReductionActions_3" name="in_LightingLoadReductionActions" value="Turn off lights when not in use">
+            <span>Turn off lights when not in use</span>
+          </label>
+          <label class="checkbox-option" for="in_LightingLoadReductionActions_4">
+            <input type="checkbox" id="in_LightingLoadReductionActions_4" name="in_LightingLoadReductionActions" value="None">
+            <span>None</span>
+          </label>
+        </div>
       </div>
       <div class="field">
-        <label for="in_PlugLoadReductionActions">Do you do any of the following to control plug-in appliances or devices?</label>
-        <input type="text" id="in_PlugLoadReductionActions" name="in_PlugLoadReductionActions">
+        <label>Do you do any of the following to control plug-in appliances or devices?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-option" for="in_PlugLoadReductionActions_0">
+            <input type="checkbox" id="in_PlugLoadReductionActions_0" name="in_PlugLoadReductionActions" value="Switch off power strips">
+            <span>Switch off power strips</span>
+          </label>
+          <label class="checkbox-option" for="in_PlugLoadReductionActions_1">
+            <input type="checkbox" id="in_PlugLoadReductionActions_1" name="in_PlugLoadReductionActions" value="Use smart power strips">
+            <span>Use smart power strips</span>
+          </label>
+          <label class="checkbox-option" for="in_PlugLoadReductionActions_2">
+            <input type="checkbox" id="in_PlugLoadReductionActions_2" name="in_PlugLoadReductionActions" value="Use smart plugs">
+            <span>Use smart plugs</span>
+          </label>
+          <label class="checkbox-option" for="in_PlugLoadReductionActions_3">
+            <input type="checkbox" id="in_PlugLoadReductionActions_3" name="in_PlugLoadReductionActions" value="None">
+            <span>None</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_LightingNotes">Lighting Notes</label>
         <input type="text" id="in_LightingNotes" name="in_LightingNotes">
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="page" data-page="7">
       <h2>Actions &amp; Referrals</h2>
       <div class="field">
-        <label for="in_ReportDeliveryPreference">How would you like to receive your report?</label>
-        <input type="text" id="in_ReportDeliveryPreference" name="in_ReportDeliveryPreference">
+        <label>How would you like to receive your report?</label>
+        <div class="radio-group">
+          <label class="radio-option" for="in_ReportDeliveryPreference_0">
+            <input type="radio" id="in_ReportDeliveryPreference_0" name="in_ReportDeliveryPreference" value="Digital (email)">
+            <span>Digital (email)</span>
+          </label>
+          <label class="radio-option" for="in_ReportDeliveryPreference_1">
+            <input type="radio" id="in_ReportDeliveryPreference_1" name="in_ReportDeliveryPreference" value="Physical (mail)">
+            <span>Physical (mail)</span>
+          </label>
+          <label class="radio-option" for="in_ReportDeliveryPreference_2">
+            <input type="radio" id="in_ReportDeliveryPreference_2" name="in_ReportDeliveryPreference" value="Both">
+            <span>Both</span>
+          </label>
+        </div>
       </div>
       <div class="field">
         <label for="in_CareFeraEligibilityInterest">I see you are not enrolled in CARE or FERA bill discount programs. Can I help determine whether you are eligible?</label>
@@ -555,7 +1222,7 @@
         <label for="in_OtherQuestions">Any other questions?</label>
         <input type="text" id="in_OtherQuestions" name="in_OtherQuestions">
       </div>
-    </section>
+    </div>
 
       <div class="actions">
         <button type="button" onclick="resumeForm()">Resume Editing</button>
@@ -563,45 +1230,7 @@
     </form>
   </div>
 
-  <script>
-    const form = document.getElementById('siteForm');
-    const params = new URLSearchParams(window.location.search);
-    const token = location.hash.replace('#', '');
-
-    if (!token) {
-      alert('Invalid or missing resume token.');
-    }
-
-    const saved = localStorage.getItem(`resume_${token}`);
-
-    if (!saved) {
-      alert('Saved form data not found on this device.');
-    } else {
-      const { data } = JSON.parse(saved);
-
-      Object.entries(data).forEach(([key, value]) => {
-        if (form[key]) {
-          form[key].value = value;
-        }
-      });
-    }
-
-    function resumeForm() {
-      // Simply redirect back to main form with same context
-      const siteId = params.get('siteId');
-      const accountId = params.get('accountId');
-
-      if (!siteId || !accountId) {
-        alert('Missing Site or Account context.');
-        return;
-      }
-
-      window.location.href =
-        `/?siteId=${encodeURIComponent(siteId)}` +
-        `&accountId=${encodeURIComponent(accountId)}` +
-        `#${token}`;
-    }
-  </script>
+  <script src="resume.js"></script>
 
 </body>
 </html>
