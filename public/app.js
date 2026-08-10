@@ -7,12 +7,23 @@ const params = new URLSearchParams(window.location.search);
 const siteId = params.get('siteId');
 const accountId = params.get('accountId');
 
+// Service_Item__c and Current_Equipment__c ids, passed in by the launching LWC
+// (these use the same names as the Flow's own variables: recordId / varEquipmentId).
+const recordId = params.get('recordId');
+const varEquipmentId = params.get('varEquipmentId');
+
 // Draft key is scoped per Site + Account (important)
 const DRAFT_KEY = `siteFormDraft_${siteId || 'none'}_${accountId || 'none'}`;
 
 // Fail fast if context is missing
 if (!siteId || !accountId) {
   alert('Missing Site or Account context. Please launch this form from Salesforce.');
+}
+
+if (!recordId) {
+  // Not fatal (a Site-only save can still go through), but Service Item / Current
+  // Equipment fields won't be saved without it.
+  console.warn('No recordId (Service_Item__c Id) present in the URL — Service Item and Current Equipment fields will not be saved.');
 }
 
 // -----------------------------
@@ -236,14 +247,25 @@ window.copyResumeLink = function () {
 };
 
 // -----------------------------
-// Submit to Power Automate (used by Exit / Save & Finish)
+// Submit directly to Salesforce (used by Exit / Save & Finish)
+//
+// This calls the NrenAssessmentApi Apex REST resource, which saves straight into
+// Site__c / Service_Item__c / Current_Equipment__c using the Flow's own field API
+// names (see RCEA_Partial_Sandbox/force-app/main/default/classes/NrenAssessmentApi.cls).
+// It replaces the previous Power Automate hop.
 // -----------------------------
+
+const SALESFORCE_REST_BASE_URL = 'https://renergy.my.salesforce.com';
+const SALESFORCE_REST_PATH = '/services/apexrest/NrenAssessmentApi/v1/save';
+
 async function submitAssessment() {
   const rawFields = serializeForm(form);
   const fields = {};
   Object.entries(rawFields).forEach(([key, value]) => {
     if (Array.isArray(value)) {
-      if (value.length) fields[key] = value;
+      // Salesforce multi-select picklists expect a single ";"-delimited string,
+      // not a JSON array.
+      if (value.length) fields[key] = value.join(';');
     } else if (value !== '' && value !== false) {
       fields[key] = typeof value === 'string' && !isNaN(value) && value.trim() !== ''
         ? Number(value)
@@ -253,17 +275,29 @@ async function submitAssessment() {
     }
   });
 
-  const res = await fetch(
-    'https://defaultf5103fa7777c4870bbd0f1f33e796b.96.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/d23cee139ae249e1a6f25702376be730/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-7pRHP5ITY7-l86MAi-AZj4YNDGk7lkwKydelJOa6Uc',
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ siteId, accountId, fields }),
-    }
-  );
+  const payload = {
+    ...fields,
+    recordId,
+    varEquipmentId,
+    siteId,
+  };
 
-  if (!res.ok) {
-    throw new Error('Power Automate submission failed');
+  const res = await fetch(`${SALESFORCE_REST_BASE_URL}${SALESFORCE_REST_PATH}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  let result = null;
+  try {
+    result = await res.json();
+  } catch (e) {
+    // no-op; handled by the !res.ok / !result.success checks below
+  }
+
+  if (!res.ok || !result || result.success !== true) {
+    const message = (result && result.message) || 'Salesforce submission failed';
+    throw new Error(message);
   }
 }
 
