@@ -247,16 +247,16 @@ window.copyResumeLink = function () {
 };
 
 // -----------------------------
-// Submit directly to Salesforce (used by Exit / Save & Finish)
+// Submit to Salesforce, via this app's own server (used by Exit / Save & Finish)
 //
-// This calls the NrenAssessmentApi Apex REST resource, which saves straight into
-// Site__c / Service_Item__c / Current_Equipment__c using the Flow's own field API
-// names (see RCEA_Partial_Sandbox/force-app/main/default/classes/NrenAssessmentApi.cls).
+// The browser posts to this server's own /api/submit-assessment route, not to
+// Salesforce directly. The server holds an OAuth Client Credentials token and
+// forwards the request to the NrenAssessmentApi Apex REST resource, which saves
+// straight into Site__c / Service_Item__c / Current_Equipment__c using the Flow's
+// own field API names. This avoids exposing Salesforce credentials in browser JS
+// and avoids needing a CORS whitelist entry in Salesforce (same-origin call).
 // It replaces the previous Power Automate hop.
 // -----------------------------
-
-const SALESFORCE_REST_BASE_URL = 'https://renergy.my.salesforce.com';
-const SALESFORCE_REST_PATH = '/services/apexrest/NrenAssessmentApi/v1/save';
 
 async function submitAssessment() {
   const rawFields = serializeForm(form);
@@ -282,7 +282,7 @@ async function submitAssessment() {
     siteId,
   };
 
-  const res = await fetch(`${SALESFORCE_REST_BASE_URL}${SALESFORCE_REST_PATH}`, {
+  const res = await fetch('/api/submit-assessment', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
