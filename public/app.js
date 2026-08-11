@@ -7,9 +7,11 @@ const params = new URLSearchParams(window.location.search);
 const siteId = params.get('siteId');
 const accountId = params.get('accountId');
 
-// Service_Item__c and Current_Equipment__c ids, passed in by the launching LWC
-// (these use the same names as the Flow's own variables: recordId / varEquipmentId).
-const recordId = params.get('recordId');
+// Current_Equipment__c id, passed in by the launching LWC (same variable name
+// as the Flow's own varEquipmentId). Service_Item__c is not written by this
+// form — the Integration User this form submits through can never be granted
+// access to that object, so all Service_Item__c-only questions have been
+// removed from the form entirely (see project notes).
 const varEquipmentId = params.get('varEquipmentId');
 
 // Draft key is scoped per Site + Account (important)
@@ -18,12 +20,6 @@ const DRAFT_KEY = `siteFormDraft_${siteId || 'none'}_${accountId || 'none'}`;
 // Fail fast if context is missing
 if (!siteId || !accountId) {
   alert('Missing Site or Account context. Please launch this form from Salesforce.');
-}
-
-if (!recordId) {
-  // Not fatal (a Site-only save can still go through), but Service Item / Current
-  // Equipment fields won't be saved without it.
-  console.warn('No recordId (Service_Item__c Id) present in the URL — Service Item and Current Equipment fields will not be saved.');
 }
 
 // -----------------------------
@@ -252,10 +248,13 @@ window.copyResumeLink = function () {
 // The browser posts to this server's own /api/submit-assessment route, not to
 // Salesforce directly. The server holds an OAuth Client Credentials token and
 // forwards the request to the NrenAssessmentApi Apex REST resource, which saves
-// straight into Site__c / Service_Item__c / Current_Equipment__c using the Flow's
-// own field API names. This avoids exposing Salesforce credentials in browser JS
-// and avoids needing a CORS whitelist entry in Salesforce (same-origin call).
-// It replaces the previous Power Automate hop.
+// straight into Site__c / Current_Equipment__c using the Flow's own field API
+// names. Service_Item__c is intentionally not written here — the Integration
+// User this form submits through can never be granted access to that object,
+// so this form no longer collects Service_Item__c-only answers. This avoids
+// exposing Salesforce credentials in browser JS and avoids needing a CORS
+// whitelist entry in Salesforce (same-origin call). It replaces the previous
+// Power Automate hop.
 // -----------------------------
 
 async function submitAssessment() {
@@ -277,7 +276,6 @@ async function submitAssessment() {
 
   const payload = {
     ...fields,
-    recordId,
     varEquipmentId,
     siteId,
   };
