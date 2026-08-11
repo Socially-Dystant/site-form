@@ -176,83 +176,21 @@ if (token) {
 }
 
 // -----------------------------
-// Save draft (offline-safe)
+// Save draft (offline-safe, same-device only — see app.js's DRAFT_KEY restore
+// on load, and the Back/Next autosave calls below)
 // -----------------------------
 function saveDraftSilently() {
-  if (!form) return null;
-
+  if (!form) return;
   const data = serializeForm(form);
-  const draftToken = crypto.randomUUID();
-
-  const payload = {
-    siteId,
-    accountId,
-    data,
-    savedAt: new Date().toISOString(),
-  };
-
-  localStorage.setItem(`resume_${draftToken}`, JSON.stringify(payload));
   localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
-
-  return draftToken;
-}
-
-function showResumeLink(draftToken) {
-  const link =
-    `${location.origin}/resume.html` +
-    `?siteId=${encodeURIComponent(siteId)}` +
-    `&accountId=${encodeURIComponent(accountId)}` +
-    `#${draftToken}`;
-
-  const box = document.getElementById('resumeBox');
-  const input = document.getElementById('resumeLink');
-  const row = document.getElementById('resumeLinkRow');
-  const title = document.getElementById('resumeBoxTitle');
-  const message = document.getElementById('resumeBoxMessage');
-
-  if (title) title.innerHTML = '<strong>Saved</strong>';
-  if (message) message.textContent = 'Resume link (copy & save):';
-  if (row) row.style.display = 'flex';
-
-  input.value = link;
-  box.style.display = 'block';
-
-  input.focus();
-  input.select();
-  input.setSelectionRange(0, 99999);
 }
 
 window.saveDraft = function () {
-  const draftToken = saveDraftSilently();
-  if (draftToken) showResumeLink(draftToken);
-};
-
-// -----------------------------
-// Copy resume link (safe fallback)
-// -----------------------------
-window.copyResumeLink = function () {
-  const input = document.getElementById('resumeLink');
-  if (!input) return;
-
-  input.focus();
-  input.select();
-  input.setSelectionRange(0, 99999);
-
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(input.value);
-    } else {
-      document.execCommand('copy');
-    }
-
-    const msg = document.getElementById('copyStatus');
-    if (msg) {
-      msg.style.display = 'block';
-      setTimeout(() => (msg.style.display = 'none'), 2000);
-    }
-  } catch (e) {
-    alert('Please manually copy the link.');
-  }
+  saveDraftSilently();
+  showToast({
+    title: 'Saved',
+    message: 'Your progress has been saved. You can safely close this page now.',
+  });
 };
 
 // -----------------------------
@@ -276,7 +214,6 @@ window.copyResumeLink = function () {
 // side, which coerces to whatever type each field actually is at write time.
 const KEEP_AS_STRING_FIELDS = new Set([
   'in_BuildingVintageYear',
-  'in_YearBuiltNumber',
   'in_NumberOfBedrooms',
   'in_NumberOfBathrooms',
   'in_AreaSquareFeet',
