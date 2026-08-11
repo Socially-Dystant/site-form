@@ -12,7 +12,7 @@
 //
 // Bump CACHE_VERSION whenever one of the shell files below changes, so
 // returning technicians pick up the new version instead of a stale cache.
-const CACHE_VERSION = 'nren-offline-v1';
+const CACHE_VERSION = 'nren-offline-v2';
 
 const SHELL_FILES = [
   './',
@@ -64,7 +64,13 @@ self.addEventListener('fetch', (event) => {
   }
 
   event.respondWith(
-    caches.match(request).then((cached) => {
+    // ignoreSearch is the fix: every real request to index.html carries
+    // query params (siteId, queueId, technicianId, ...), but the precached
+    // shell entry was stored under the bare URL with no query string.
+    // Without ignoreSearch, caches.match() does an exact-URL match
+    // (query string included) and misses every single real navigation to
+    // the form, even though the file is sitting right there in the cache.
+    caches.match(request, { ignoreSearch: true }).then((cached) => {
       if (cached) {
         return cached;
       }
@@ -75,7 +81,18 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
           return response;
         })
-        .catch(() => cached);
+        .catch(() => {
+          // Truly offline and this URL was never precached (e.g. a Site's
+          // form opened for the first time with no signal at all - not the
+          // expected flow, but shouldn't hard-crash). Returning a real
+          // Response here - instead of the old code's already-undefined
+          // "cached" variable - is what avoids the
+          // "Failed to convert value to 'Response'" crash you hit.
+          return new Response(
+            'You are offline and this page has not been saved for offline use yet. Please reconnect and try again.',
+            { status: 503, statusText: 'Offline', headers: { 'Content-Type': 'text/plain' } }
+          );
+        });
     })
   );
 });
