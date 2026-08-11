@@ -1,5 +1,5 @@
 {
-  "name": "NREN Offline Assessment Queue",
+  "name": "NREN Online Assessment Queue",
   "short_name": "NREN Queue",
   "description": "Technician offline queue and phone assessment form for NREN site visits.",
   "start_url": "queue.html",
