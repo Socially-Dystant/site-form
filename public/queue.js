@@ -28,6 +28,7 @@ const errorBanner = document.getElementById('queueError');
 const listEl = document.getElementById('queueList');
 const emptyEl = document.getElementById('queueEmpty');
 const refreshBtn = document.getElementById('btnRefreshQueue');
+const clearQueueBtn = document.getElementById('btnClearQueue');
 
 function getLocalStatusMap() {
   try {
@@ -57,6 +58,95 @@ function writeCache(items) {
     CACHE_KEY,
     JSON.stringify({ items, syncedAt: new Date().toISOString() })
   );
+}
+
+// Drops one item from the local cache + local status overlay, without
+// waiting for a fresh /api/queue sync. Used after a successful delete so
+// the card disappears immediately.
+function removeItemFromLocalCacheEntry(queueId) {
+  const cached = readCache();
+  if (cached && Array.isArray(cached.items)) {
+    writeCache(cached.items.filter((i) => i.queueId !== queueId));
+  }
+
+  const statusMap = getLocalStatusMap();
+  delete statusMap[queueId];
+  localStorage.setItem(LOCAL_STATUS_KEY, JSON.stringify(statusMap));
+}
+
+// Removing a site from the queue should also clean up any draft answers
+// sitting in localStorage for it (app.js's DRAFT_KEY is keyed by site +
+// account, independent of queueId) - otherwise it's orphaned data that
+// silently reappears if the same Site is ever queued again.
+function clearFormDraftForItem(item) {
+  if (!item || !item.siteId) return;
+  localStorage.removeItem(`siteFormDraft_${item.siteId}_${item.accountId || 'none'}`);
+}
+
+async function deleteQueueItemOnServer(queueId) {
+  const res = await fetch(
+    `/api/queue?technicianId=${encodeURIComponent(technicianId)}&queueId=${encodeURIComponent(queueId)}`,
+    { method: 'DELETE' }
+  );
+  const data = await res.json().catch(() => null);
+  if (!res.ok || !data || data.success !== true) {
+    throw new Error((data && data.message) || 'Unable to remove this item.');
+  }
+}
+
+async function clearQueueOnServer() {
+  const res = await fetch(
+    `/api/queue?technicianId=${encodeURIComponent(technicianId)}&all=true`,
+    { method: 'DELETE' }
+  );
+  const data = await res.json().catch(() => null);
+  if (!res.ok || !data || data.success !== true) {
+    throw new Error((data && data.message) || 'Unable to clear your queue.');
+  }
+}
+
+async function deleteSingleItem(item) {
+  const confirmed = confirm(
+    `Remove ${item.siteName || 'this site'} from your queue?\n\nThis cannot be undone.`
+  );
+  if (!confirmed) return;
+
+  try {
+    await deleteQueueItemOnServer(item.queueId);
+    removeItemFromLocalCacheEntry(item.queueId);
+    clearFormDraftForItem(item);
+
+    const cached = readCache();
+    renderItems(cached ? cached.items : []);
+    statusText.textContent = `Removed ${item.siteName || 'that site'} from your queue.`;
+  } catch (err) {
+    console.error('Delete failed', err);
+    alert('Unable to remove this item right now. Check your connection and try again.');
+  }
+}
+
+async function clearQueue() {
+  const confirmed = confirm(
+    'This will remove every site from your queue.\n\nThis cannot be undone. Continue?'
+  );
+  if (!confirmed) return;
+
+  try {
+    await clearQueueOnServer();
+
+    const cached = readCache();
+    if (cached && Array.isArray(cached.items)) {
+      cached.items.forEach(clearFormDraftForItem);
+    }
+
+    writeCache([]);
+    localStorage.removeItem(LOCAL_STATUS_KEY);
+    renderItems([]);
+    statusText.textContent = 'Queue cleared.';
+  } catch (err) {
+    console.error('Clear queue failed', err);
+    alert('Unable to clear your queue right now. Check your connection and try again.');
+  }
 }
 
 async function fetchQueueFromServer() {
@@ -162,6 +252,20 @@ function renderItems(items) {
     }
 
     card.appendChild(actions);
+
+    // Removing a single site is always available, regardless of status -
+    // a smaller, muted control on its own row so it doesn't compete with
+    // the primary Start/Resume/Submit actions above.
+    const removeRow = document.createElement('div');
+    removeRow.className = 'queue-card-remove-row';
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.textContent = 'Remove from Queue';
+    removeBtn.className = 'queue-btn-remove';
+    removeBtn.addEventListener('click', () => deleteSingleItem(item));
+    removeRow.appendChild(removeBtn);
+    card.appendChild(removeRow);
+
     listEl.appendChild(card);
   });
 }
@@ -227,6 +331,10 @@ async function init() {
 
 if (refreshBtn) {
   refreshBtn.addEventListener('click', () => init());
+}
+
+if (clearQueueBtn) {
+  clearQueueBtn.addEventListener('click', () => clearQueue());
 }
 
 init();

@@ -399,6 +399,25 @@ button.danger:active {
 /* -----------------------------
    Offline Assessment Queue view (queue.html / queue.js)
    ----------------------------- */
+.queue-top-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.queue-clear-btn {
+  flex: none;
+  min-width: 0;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  cursor: pointer;
+}
+
 .queue-status-bar {
   display: flex;
   align-items: center;
@@ -524,6 +543,24 @@ button.danger:active {
 .queue-completed-text {
   font-weight: 700;
   color: #166534;
+}
+
+.queue-card-remove-row {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.queue-btn-remove {
+  flex: none;
+  min-width: 0;
+  background: none;
+  border: none;
+  color: #b91c1c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: underline;
+  padding: 6px 0;
+  cursor: pointer;
 }
 
 .queue-empty {

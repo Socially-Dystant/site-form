@@ -179,6 +179,60 @@ app.get('/api/queue', async (req, res) => {
   }
 });
 
+// -----------------------------
+// Remove item(s) from the queue
+//
+// A real Salesforce delete, not just hiding something client-side -
+// otherwise a removed item would just reappear the next time queue.js
+// re-syncs. Requires either a specific queueId (remove one site) or
+// all=true (clear the whole queue) - see OfflineAssessmentQueueApi for why
+// there's no "no queueId means clear everything" fallback.
+// -----------------------------
+app.delete('/api/queue', async (req, res) => {
+  try {
+    const technicianId = req.query.technicianId;
+    const queueId = req.query.queueId;
+    const all = req.query.all;
+
+    if (!technicianId) {
+      res.status(400).json({ success: false, message: 'Missing technicianId.' });
+      return;
+    }
+    if (!queueId && all !== 'true') {
+      res.status(400).json({ success: false, message: 'Provide either queueId or all=true.' });
+      return;
+    }
+
+    const token = await getSalesforceAccessToken();
+
+    const qp = new URLSearchParams({ technicianId });
+    if (queueId) qp.set('queueId', queueId);
+    if (all === 'true') qp.set('all', 'true');
+
+    const sfRes = await fetch(`${token.instanceUrl}${SF_REST_QUEUE_PATH}?${qp.toString()}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token.accessToken}` },
+    });
+
+    const sfData = await sfRes.json().catch(() => null);
+
+    if (!sfRes.ok) {
+      if (sfRes.status === 401) {
+        cachedToken = null;
+      }
+      res.status(sfRes.status || 502).json(
+        sfData || { success: false, message: 'Unable to update queue.' }
+      );
+      return;
+    }
+
+    res.json(sfData);
+  } catch (err) {
+    console.error('queue delete error', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
