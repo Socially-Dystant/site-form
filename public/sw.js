@@ -12,7 +12,7 @@
 //
 // Bump CACHE_VERSION whenever one of the shell files below changes, so
 // returning technicians pick up the new version instead of a stale cache.
-const CACHE_VERSION = 'nren-offline-v2';
+const CACHE_VERSION = 'nren-offline-v3';
 
 const SHELL_FILES = [
   './',
