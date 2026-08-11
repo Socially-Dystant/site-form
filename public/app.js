@@ -14,6 +14,42 @@ const accountId = params.get('accountId');
 // removed from the form entirely (see project notes).
 const varEquipmentId = params.get('varEquipmentId');
 
+// Offline_Assessment_Queue__c id, passed in when this form is launched from
+// the technician's daily queue list rather than directly from the Site
+// record. When present, a successful submit flips that queue item's
+// Status__c to "Completed".
+const queueId = params.get('queueId');
+
+// The technician's Salesforce User Id, passed through from the queue view
+// (queue.js) so this page can link back to it. Only present when launched
+// from the queue - direct Site-record launches (launchOfflineYearBuilt)
+// don't have a queue to return to.
+const technicianId = params.get('technicianId');
+
+// -----------------------------
+// Service worker registration - same app shell cache as queue.html, so this
+// form keeps working (including for a Site never opened before) with no
+// connection at all, once it's been loaded here once while online.
+// -----------------------------
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch((err) => {
+    console.warn('Service worker registration failed', err);
+  });
+}
+
+// -----------------------------
+// "Back to Queue" link - only shown when this form was launched from the
+// technician's queue (both queueId and technicianId present).
+// -----------------------------
+if (queueId && technicianId) {
+  const backLink = document.getElementById('queueBackLink');
+  const backAnchor = document.getElementById('queueBackLinkAnchor');
+  if (backLink && backAnchor) {
+    backAnchor.href = `queue.html?technicianId=${encodeURIComponent(technicianId)}`;
+    backLink.style.display = 'block';
+  }
+}
+
 // Draft key is scoped per Site + Account (important)
 const DRAFT_KEY = `siteFormDraft_${siteId || 'none'}_${accountId || 'none'}`;
 
@@ -189,7 +225,9 @@ window.saveDraft = function () {
   saveDraftSilently();
   showToast({
     title: 'Saved',
-    message: 'Your progress has been saved. You can safely close this page now.',
+    message: (queueId && technicianId)
+      ? "Your progress has been saved. Tap ← Back to Queue above to continue with your next site, or close this page."
+      : 'Your progress has been saved. You can safely close this page now.',
   });
 };
 
@@ -241,6 +279,7 @@ async function submitAssessment() {
     ...fields,
     varEquipmentId,
     siteId,
+    queueId,
   };
 
   const res = await fetch('/api/submit-assessment', {
@@ -330,7 +369,9 @@ if (btnExit) {
 
       showToast({
         title: 'Submitted',
-        message: 'Your assessment has been submitted. You can safely close this tab now.',
+        message: (queueId && technicianId)
+          ? "Your assessment has been submitted. Tap ← Back to Queue above to continue with your next site, or close this tab."
+          : 'Your assessment has been submitted. You can safely close this tab now.',
       });
     } catch (err) {
       console.error(err);
@@ -375,4 +416,9 @@ window.confirmClearForm = confirmClearForm;
 // Init
 // -----------------------------
 wireConditionals();
-showPage(0);
+
+// The Queue list's Submit action links here with startPage=last, jumping
+// straight to the final page for a quick review before hitting the form's
+// own Submit button, instead of paging through everything again.
+const startPage = params.get('startPage');
+showPage(startPage === 'last' ? totalPages - 1 : 0);

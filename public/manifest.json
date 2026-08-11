@@ -1,0 +1,25 @@
+{
+  "name": "NREN Offline Assessment Queue",
+  "short_name": "NREN Queue",
+  "description": "Technician offline queue and phone assessment form for NREN site visits.",
+  "start_url": "queue.html",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f3d20",
+  "theme_color": "#14532d",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

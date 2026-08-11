@@ -52,6 +52,7 @@ const SF_LOGIN_URL = process.env.SF_LOGIN_URL || 'https://renergy.my.salesforce.
 const SF_CLIENT_ID = process.env.SF_CLIENT_ID;
 const SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET;
 const SF_REST_PATH = '/services/apexrest/NrenAssessmentApi/v1/save';
+const SF_REST_QUEUE_PATH = '/services/apexrest/OfflineAssessmentQueueApi/v1/queue';
 
 // Simple in-memory token cache. Client Credentials responses don't reliably
 // include expires_in, so refresh conservatively rather than trusting a long TTL.
@@ -126,6 +127,54 @@ app.post('/api/submit-assessment', async (req, res) => {
     res.json(sfData);
   } catch (err) {
     console.error('submit-assessment error', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// -----------------------------
+// Offline queue proxy
+//
+// Called by queue.js, once each morning while the technician still has a
+// signal (and again whenever they tap Refresh while online). Same pattern
+// as /api/submit-assessment: this server holds the Client Credentials
+// token, the browser never talks to Salesforce directly. Everything the
+// site-form app needs to work fully offline afterwards (siteId, accountId,
+// currentEquipmentId, serviceItemId per queue item) comes back resolved
+// in this one response - see OfflineAssessmentQueueController.
+// -----------------------------
+app.get('/api/queue', async (req, res) => {
+  try {
+    const technicianId = req.query.technicianId;
+    if (!technicianId) {
+      res.status(400).json({ success: false, message: 'Missing technicianId.' });
+      return;
+    }
+
+    const token = await getSalesforceAccessToken();
+
+    const sfRes = await fetch(
+      `${token.instanceUrl}${SF_REST_QUEUE_PATH}?technicianId=${encodeURIComponent(technicianId)}`,
+      {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token.accessToken}` },
+      }
+    );
+
+    const sfData = await sfRes.json().catch(() => null);
+
+    if (!sfRes.ok) {
+      if (sfRes.status === 401) {
+        cachedToken = null;
+      }
+      res.status(sfRes.status || 502).json(
+        sfData || { success: false, message: 'Unable to load queue.' }
+      );
+      return;
+    }
+
+    res.json({ success: true, items: sfData });
+  } catch (err) {
+    console.error('queue fetch error', err);
     res.status(500).json({ success: false, message: err.message });
   }
 });

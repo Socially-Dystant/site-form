@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="UTF-8">
+  <title>Offline Assessment Queue</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="theme-color" content="#14532d">
+</head>
+<body>
+  <h1>Offline Assessment Queue</h1>
+
+  <div id="queueStatusBar" class="queue-status-bar">
+    <span id="queueStatusText">Loading your queue&hellip;</span>
+    <button type="button" id="btnRefreshQueue" class="queue-refresh-btn">Refresh</button>
+  </div>
+
+  <div id="queueError" class="queue-banner queue-banner-error" style="display:none">
+    Unable to reach Salesforce, and no saved queue was found on this device. Connect to the
+    internet and open this page once before you go offline.
+  </div>
+
+  <div id="queueList" class="queue-list"></div>
+
+  <div id="queueEmpty" class="queue-empty" style="display:none">
+    Your queue is empty. Go to a Site record in Salesforce and tap
+    <strong>Add to Today's Queue</strong> to add sites to visit today.
+  </div>
+
+  <script src="queue.js"></script>
+</body>
+</html>
