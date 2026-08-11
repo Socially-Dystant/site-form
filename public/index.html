@@ -15,12 +15,42 @@
     <div class="page" data-page="0" style="display:block">
       <h2>Introduction</h2>
       <div class="field">
-        <label for="in_Status">Status</label>
-        <input type="text" id="in_Status" name="in_Status">
-      </div>
-      <div class="field">
         <label for="in_AssessmentDate">Assessment Date</label>
         <input type="date" id="in_AssessmentDate" name="in_AssessmentDate">
+      </div>
+      <h3>Information</h3>
+      <div class="field">
+        <label for="in_BuildingVintageYear">Building Vintage (Year)</label>
+        <input type="number" id="in_BuildingVintageYear" name="in_BuildingVintageYear">
+      </div>
+      <div class="field">
+        <label for="in_YearBuiltNumber">Year Built- Number</label>
+        <input type="number" id="in_YearBuiltNumber" name="in_YearBuiltNumber">
+      </div>
+      <div class="field">
+        <label for="in_NumberOfBedrooms">Number of Bedrooms</label>
+        <input type="number" id="in_NumberOfBedrooms" name="in_NumberOfBedrooms">
+      </div>
+      <div class="field">
+        <label for="in_NumberOfBathrooms">Number of Bathrooms</label>
+        <input type="number" id="in_NumberOfBathrooms" name="in_NumberOfBathrooms">
+      </div>
+      <div class="field">
+        <label for="in_AreaSquareFeet">Area (Square Feet)</label>
+        <input type="number" id="in_AreaSquareFeet" name="in_AreaSquareFeet">
+      </div>
+      <div class="field">
+        <label for="in_PropertyType">Property Type</label>
+        <select id="in_PropertyType" name="in_PropertyType">
+          <option value="">--select an item--</option>
+          <option value="Single-Family">Single-Family</option>
+          <option value="Multi-Family">Multi-Family</option>
+          <option value="Mobile Home">Mobile Home</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="in_NAICSCode">NAICS Code</label>
+        <input type="number" id="in_NAICSCode" name="in_NAICSCode">
       </div>
     </div>
 
@@ -359,6 +389,7 @@
         <div class="field">
           <label for="Cooling_Source">What type of cooling system does the home use?</label>
           <select id="Cooling_Source" name="Cooling_Source">
+            <option value="">--select an item--</option>
             <option value="Central AC">Central AC</option>
             <option value="Portable/Window AC">Portable/Window AC</option>
             <option value="Whole House Fan">Whole House Fan</option>
@@ -372,6 +403,7 @@
         <div class="field">
           <label for="Cooling_Equipment_Age">How old is the cooling equipment?</label>
           <select id="Cooling_Equipment_Age" name="Cooling_Equipment_Age">
+            <option value="">--select an item--</option>
             <option value="0-9 years">0-9 years</option>
             <option value="10-15 years">10-15 years</option>
             <option value="16-20 years">16-20 years</option>
@@ -382,6 +414,7 @@
         <div class="field">
           <label for="Cooling_System_Efficiency">What is the efficiency level of the cooling system?</label>
           <select id="Cooling_System_Efficiency" name="Cooling_System_Efficiency">
+            <option value="">--select an item--</option>
             <option value="Central, Packaged, EnergyStar: ≥ 15.2 SEER2/ ≥ 11.5 EER2 ≥ 15.7 SEER">Central, Packaged, EnergyStar: ≥ 15.2 SEER2/ ≥ 11.5 EER2 ≥ 15.7 SEER</option>
             <option value="Central, Packaged, Std: &lt; 15.2 SEER2/ &lt; 11.5 EER2 or &lt; 15.7 SEER">Central, Packaged, Std: &lt; 15.2 SEER2/ &lt; 11.5 EER2 or &lt; 15.7 SEER</option>
             <option value="Central, Split, EnergyStar: ≥ 15.2 SEER2/ ≥ 12.0 EER2 or ≥ 15.7 SEER">Central, Split, EnergyStar: ≥ 15.2 SEER2/ ≥ 12.0 EER2 or ≥ 15.7 SEER</option>
@@ -402,6 +435,7 @@
         <div class="field">
           <label for="Cooling_Thermostat_Type">What type of thermostat controls the cooling system?</label>
           <select id="Cooling_Thermostat_Type" name="Cooling_Thermostat_Type">
+            <option value="">--select an item--</option>
             <option value="Programmable">Programmable</option>
             <option value="Smart">Smart</option>
             <option value="Analog">Analog</option>

@@ -134,6 +134,19 @@ function showPage(idx) {
 }
 
 // -----------------------------
+// Default Assessment Date to today. Runs before the draft/resume restores
+// below, so a saved value (from an earlier session on this same site/account)
+// still takes precedence over this default.
+// -----------------------------
+if (form && form.in_AssessmentDate && !form.in_AssessmentDate.value) {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  form.in_AssessmentDate.value = `${yyyy}-${mm}-${dd}`;
+}
+
+// -----------------------------
 // Restore from localStorage
 // -----------------------------
 if (form) {
@@ -257,6 +270,19 @@ window.copyResumeLink = function () {
 // Power Automate hop.
 // -----------------------------
 
+// Property info fields (Site__c "Information" section) whose real Salesforce
+// field type wasn't confirmed ahead of time (Number vs. Text). These are
+// always sent as JSON strings, matching the String-typed fields on the Apex
+// side, which coerces to whatever type each field actually is at write time.
+const KEEP_AS_STRING_FIELDS = new Set([
+  'in_BuildingVintageYear',
+  'in_YearBuiltNumber',
+  'in_NumberOfBedrooms',
+  'in_NumberOfBathrooms',
+  'in_AreaSquareFeet',
+  'in_NAICSCode',
+]);
+
 async function submitAssessment() {
   const rawFields = serializeForm(form);
   const fields = {};
@@ -266,7 +292,7 @@ async function submitAssessment() {
       // not a JSON array.
       if (value.length) fields[key] = value.join(';');
     } else if (value !== '' && value !== false) {
-      fields[key] = typeof value === 'string' && !isNaN(value) && value.trim() !== ''
+      fields[key] = (!KEEP_AS_STRING_FIELDS.has(key) && typeof value === 'string' && !isNaN(value) && value.trim() !== '')
         ? Number(value)
         : value;
     } else if (typeof value === 'boolean') {
