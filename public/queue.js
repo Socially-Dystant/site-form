@@ -89,6 +89,9 @@ function buildFormUrl(item, action) {
     `technicianId=${encodeURIComponent(technicianId)}`,
   ];
 
+  if (item.siteName) {
+    queryParams.push(`siteName=${encodeURIComponent(item.siteName)}`);
+  }
   if (item.accountId) {
     queryParams.push(`accountId=${encodeURIComponent(item.accountId)}`);
   }

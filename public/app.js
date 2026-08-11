@@ -26,6 +26,25 @@ const queueId = params.get('queueId');
 // don't have a queue to return to.
 const technicianId = params.get('technicianId');
 
+// The Site's name, passed through by whichever LWC opened this form
+// (launchOfflineYearBuilt or the queue view), purely for display - so the
+// technician can be sure which Site's form they're looking at. Not sent
+// back to Salesforce; Site__c is already identified by siteId.
+const siteName = params.get('siteName');
+
+// -----------------------------
+// Show the Site name at the top of the form, on every page (this lives
+// outside the per-page .page divs, so it stays visible as the technician
+// pages through).
+// -----------------------------
+if (siteName) {
+  const siteNameEl = document.getElementById('formSiteName');
+  if (siteNameEl) {
+    siteNameEl.textContent = siteName;
+    siteNameEl.style.display = 'block';
+  }
+}
+
 // -----------------------------
 // Service worker registration - same app shell cache as queue.html, so this
 // form keeps working (including for a Site never opened before) with no
@@ -335,6 +354,40 @@ function hideToast() {
 window.hideToast = hideToast;
 
 // -----------------------------
+// Remove this item from the queue's local cache immediately on a successful
+// submit, so it's gone from the list the moment the technician taps
+// "Back to Queue" - not just once the queue view happens to re-sync with
+// Salesforce (which also excludes Completed items server-side, via
+// OfflineAssessmentQueueController, but that's a second layer of the same
+// fix, not the one doing the work right after Submit).
+// -----------------------------
+function removeCompletedItemFromQueueCache() {
+  if (!queueId || !technicianId) return;
+
+  try {
+    const cacheKey = `offlineQueueCache_${technicianId}`;
+    const raw = localStorage.getItem(cacheKey);
+    if (raw) {
+      const cache = JSON.parse(raw);
+      if (cache && Array.isArray(cache.items)) {
+        cache.items = cache.items.filter((item) => item.queueId !== queueId);
+        localStorage.setItem(cacheKey, JSON.stringify(cache));
+      }
+    }
+
+    const statusKey = `offlineQueueLocalStatus_${technicianId}`;
+    const rawStatus = localStorage.getItem(statusKey);
+    if (rawStatus) {
+      const statusMap = JSON.parse(rawStatus);
+      delete statusMap[queueId];
+      localStorage.setItem(statusKey, JSON.stringify(statusMap));
+    }
+  } catch (e) {
+    console.warn('Unable to update cached queue after submit', e);
+  }
+}
+
+// -----------------------------
 // Nav buttons: Save and Exit, Back, Next, Submit
 // -----------------------------
 const btnSave = document.getElementById('btnSave');
@@ -366,6 +419,7 @@ if (btnExit) {
     try {
       await submitAssessment();
       localStorage.removeItem(DRAFT_KEY);
+      removeCompletedItemFromQueueCache();
 
       showToast({
         title: 'Submitted',
