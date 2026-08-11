@@ -300,7 +300,40 @@ async function submitAssessment() {
 }
 
 // -----------------------------
-// Nav buttons: Save, Back, Next, Exit
+// Success toast (shown on Submit)
+// -----------------------------
+let toastHideTimer = null;
+
+function showToast({ title, message, durationMs = 6000 } = {}) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+
+  const titleEl = document.getElementById('toastTitle');
+  const messageEl = document.getElementById('toastMessage');
+  if (titleEl && title) titleEl.textContent = title;
+  if (messageEl && message) messageEl.textContent = message;
+
+  toast.classList.add('visible');
+
+  if (toastHideTimer) clearTimeout(toastHideTimer);
+  if (durationMs > 0) {
+    toastHideTimer = setTimeout(hideToast, durationMs);
+  }
+}
+
+function hideToast() {
+  const toast = document.getElementById('toast');
+  if (toast) toast.classList.remove('visible');
+  if (toastHideTimer) {
+    clearTimeout(toastHideTimer);
+    toastHideTimer = null;
+  }
+}
+
+window.hideToast = hideToast;
+
+// -----------------------------
+// Nav buttons: Save and Exit, Back, Next, Submit
 // -----------------------------
 const btnSave = document.getElementById('btnSave');
 const btnBack = document.getElementById('btnBack');
@@ -332,18 +365,13 @@ if (btnExit) {
       await submitAssessment();
       localStorage.removeItem(DRAFT_KEY);
 
-      const box = document.getElementById('resumeBox');
-      const row = document.getElementById('resumeLinkRow');
-      const title = document.getElementById('resumeBoxTitle');
-      const message = document.getElementById('resumeBoxMessage');
-
-      if (title) title.innerHTML = '<strong>Submitted</strong>';
-      if (message) message.textContent = 'Your assessment has been saved and submitted. You can safely close this window now.';
-      if (row) row.style.display = 'none';
-      if (box) box.style.display = 'block';
+      showToast({
+        title: 'Submitted',
+        message: 'Your assessment has been submitted. You can safely close this tab now.',
+      });
     } catch (err) {
       console.error(err);
-      alert('Submission failed. Your answers are saved as a draft — please try Exit again, or use Save to get a resume link.');
+      alert('Submission failed. Your answers are saved as a draft — please try Submit again, or use Save and Exit to get a resume link.');
     }
   });
 }

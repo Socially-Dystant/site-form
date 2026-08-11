@@ -564,11 +564,19 @@
       </div>
       <div class="field">
         <label for="in_FlushesWaterHeaterYearly">Do you flush your water heater tank or the heat exchanger every year?</label>
-        <input type="text" id="in_FlushesWaterHeaterYearly" name="in_FlushesWaterHeaterYearly">
+        <select id="in_FlushesWaterHeaterYearly" name="in_FlushesWaterHeaterYearly">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_LeakyFaucetsOrPlumbing">Are there any known leaky faucets or plumbing issues?</label>
-        <input type="text" id="in_LeakyFaucetsOrPlumbing" name="in_LeakyFaucetsOrPlumbing">
+        <select id="in_LeakyFaucetsOrPlumbing" name="in_LeakyFaucetsOrPlumbing">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_WaterNotes">Water Notes</label>
@@ -581,7 +589,11 @@
       <h3>Envelope</h3>
       <div class="field">
         <label for="in_AccessibleAttic">Is the attic accessible?</label>
-        <input type="text" id="in_AccessibleAttic" name="in_AccessibleAttic">
+        <select id="in_AccessibleAttic" name="in_AccessibleAttic">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_AtticAccessWeatherstrippedInsulated">Is the attic access weatherstripped and insulated?</label>
@@ -616,11 +628,19 @@
       </div>
       <div class="field">
         <label for="in_AccessibleCrawlspace">Is the crawlspace accessible?</label>
-        <input type="text" id="in_AccessibleCrawlspace" name="in_AccessibleCrawlspace">
+        <select id="in_AccessibleCrawlspace" name="in_AccessibleCrawlspace">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_MoistureBarrierCrawlspace">Is there a moisture barrier covering the ground in the crawlspace?</label>
-        <input type="text" id="in_MoistureBarrierCrawlspace" name="in_MoistureBarrierCrawlspace">
+        <select id="in_MoistureBarrierCrawlspace" name="in_MoistureBarrierCrawlspace">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FloorInsulated">Is the floor insulated?</label>
@@ -725,32 +745,60 @@
       </div>
       <div class="field">
         <label for="in_FunctionalFireplaceDamper">Does the home have a functional fireplace damper?</label>
-        <input type="text" id="in_FunctionalFireplaceDamper" name="in_FunctionalFireplaceDamper">
+        <select id="in_FunctionalFireplaceDamper" name="in_FunctionalFireplaceDamper">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <h3>Envelope General/Behavior</h3>
       <div class="field">
         <label for="in_HomeDrafty">Is your home drafty or does it have difficulty maintaining a desired temperature?</label>
-        <input type="text" id="in_HomeDrafty" name="in_HomeDrafty">
+        <select id="in_HomeDrafty" name="in_HomeDrafty">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_MoistureOrMoldIssues">Do you have any known moisture or mold issues?</label>
-        <input type="text" id="in_MoistureOrMoldIssues" name="in_MoistureOrMoldIssues">
+        <select id="in_MoistureOrMoldIssues" name="in_MoistureOrMoldIssues">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_UsesDehumidifierCleansFilter">Do you use a dehumidifier in your home, and do you regularly clean the filter?</label>
-        <input type="text" id="in_UsesDehumidifierCleansFilter" name="in_UsesDehumidifierCleansFilter">
+        <select id="in_UsesDehumidifierCleansFilter" name="in_UsesDehumidifierCleansFilter">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_BathFansExhaustOutside">Do you run your bath fans during showers, and do they exhaust to outside?</label>
-        <input type="text" id="in_BathFansExhaustOutside" name="in_BathFansExhaustOutside">
+        <select id="in_BathFansExhaustOutside" name="in_BathFansExhaustOutside">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_KitchenFanExhaustOutside">Do you have a working kitchen fan that exhausts to outside?</label>
-        <input type="text" id="in_KitchenFanExhaustOutside" name="in_KitchenFanExhaustOutside">
+        <select id="in_KitchenFanExhaustOutside" name="in_KitchenFanExhaustOutside">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_RainGuttersDownspouts">Are the rain gutters in good working condition, and do the downspouts extend more than 6 feet from the house?</label>
-        <input type="text" id="in_RainGuttersDownspouts" name="in_RainGuttersDownspouts">
+        <select id="in_RainGuttersDownspouts" name="in_RainGuttersDownspouts">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_AirFiltrationSystem">What type of air filtration system does the home have?</label>
@@ -814,15 +862,27 @@
       </div>
       <div class="field">
         <label for="in_VacuumsFridgeCoilsYearly">Do you vacuum fridge coils every year?</label>
-        <input type="text" id="in_VacuumsFridgeCoilsYearly" name="in_VacuumsFridgeCoilsYearly">
+        <select id="in_VacuumsFridgeCoilsYearly" name="in_VacuumsFridgeCoilsYearly">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FridgeFreezerSealsGood">Are your fridge and freezer door seals in good condition?</label>
-        <input type="text" id="in_FridgeFreezerSealsGood" name="in_FridgeFreezerSealsGood">
+        <select id="in_FridgeFreezerSealsGood" name="in_FridgeFreezerSealsGood">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FridgeNearHeatSource">Is your fridge located near a heat source, such as a stove or furnace?</label>
-        <input type="text" id="in_FridgeNearHeatSource" name="in_FridgeNearHeatSource">
+        <select id="in_FridgeNearHeatSource" name="in_FridgeNearHeatSource">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <h3>Kitchen</h3>
       <div class="field">
@@ -838,7 +898,11 @@
       </div>
       <div class="field">
         <label for="in_DishwasherUsesHeatedDry">Do you use the heated dry setting on your dishwasher?</label>
-        <input type="text" id="in_DishwasherUsesHeatedDry" name="in_DishwasherUsesHeatedDry">
+        <select id="in_DishwasherUsesHeatedDry" name="in_DishwasherUsesHeatedDry">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_RangeCooktopFuelType">What is the fuel type for the range or cooktop?</label>
@@ -911,7 +975,11 @@
       </div>
       <div class="field">
         <label for="in_DryerVentExhaustsOutsideClear">Does the dryer vent exhaust to outside, and is the vent clean and clear all the way out?</label>
-        <input type="text" id="in_DryerVentExhaustsOutsideClear" name="in_DryerVentExhaustsOutsideClear">
+        <select id="in_DryerVentExhaustsOutsideClear" name="in_DryerVentExhaustsOutsideClear">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label>Do you maintain and clean the filters and vents on the following appliances?</label>
@@ -941,11 +1009,19 @@
       <h3>Safety &amp; Resilience</h3>
       <div class="field">
         <label for="in_WorkingSmokeCarbonMonoxideAlarms">Do you have working smoke and carbon monoxide alarms? Have they been tested, and are more needed?</label>
-        <input type="text" id="in_WorkingSmokeCarbonMonoxideAlarms" name="in_WorkingSmokeCarbonMonoxideAlarms">
+        <select id="in_WorkingSmokeCarbonMonoxideAlarms" name="in_WorkingSmokeCarbonMonoxideAlarms">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_FireExtinguishersOld">Do you have any fire extinguishers that are more than 12 years old?</label>
-        <input type="text" id="in_FireExtinguishersOld" name="in_FireExtinguishersOld">
+        <select id="in_FireExtinguishersOld" name="in_FireExtinguishersOld">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_ReliesOnElectricMedicalEquipment">Does anyone in your household rely on electric medical equipment, such as a CPAP machine?</label>
@@ -995,15 +1071,27 @@
       </div>
       <div class="field">
         <label for="in_SignedUpForEmergencyAlerts">Are you signed up to receive emergency alerts?</label>
-        <input type="text" id="in_SignedUpForEmergencyAlerts" name="in_SignedUpForEmergencyAlerts">
+        <select id="in_SignedUpForEmergencyAlerts" name="in_SignedUpForEmergencyAlerts">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_GasAppliancesInGarageNot18AboveGround">Do you have any gas appliances in the garage that are not 18 inches above the ground?</label>
-        <input type="text" id="in_GasAppliancesInGarageNot18AboveGround" name="in_GasAppliancesInGarageNot18AboveGround">
+        <select id="in_GasAppliancesInGarageNot18AboveGround" name="in_GasAppliancesInGarageNot18AboveGround">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_SuspectGasLeaks">Do you ever smell sulfur or rotten egg odor, or suspect gas leaks?</label>
-        <input type="text" id="in_SuspectGasLeaks" name="in_SuspectGasLeaks">
+        <select id="in_SuspectGasLeaks" name="in_SuspectGasLeaks">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label for="in_SafetyNotes">Safety Notes</label>
@@ -1016,7 +1104,11 @@
       <h3>Plug Load &amp; Lighting</h3>
       <div class="field">
         <label for="in_HasNonLedLighting">Do you have any interior or exterior lighting that is not LED?</label>
-        <input type="text" id="in_HasNonLedLighting" name="in_HasNonLedLighting">
+        <select id="in_HasNonLedLighting" name="in_HasNonLedLighting">
+          <option value="">--select an item--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="field">
         <label>Do you do any of the following to reduce lighting loads?</label>
@@ -1071,10 +1163,10 @@
     </div>
 
     <div class="actions">
-      <button type="button" id="btnSave">Save</button>
+      <button type="button" id="btnSave">Save and Exit</button>
       <button type="button" id="btnBack">Back</button>
       <button type="button" id="btnNext">Next</button>
-      <button type="button" id="btnExit" class="danger">Exit</button>
+      <button type="button" id="btnExit" class="danger">Submit</button>
     </div>
 
   </form>
@@ -1096,6 +1188,15 @@
     <p id="copyStatus" style="margin-top:6px; color:green; display:none;">
         Link copied!
     </p>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite">
+      <div class="toast-icon">&#10003;</div>
+      <div class="toast-body">
+        <p class="toast-title" id="toastTitle">Submitted</p>
+        <p id="toastMessage">Your assessment has been submitted. You can safely close this tab now.</p>
+      </div>
+      <button type="button" class="toast-close" onclick="hideToast()" aria-label="Dismiss">&times;</button>
     </div>
 
     <script>

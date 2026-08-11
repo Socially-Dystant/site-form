@@ -10,8 +10,8 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
 
-  /* Slight forest green gradient */
-  background: linear-gradient(160deg, #eef5ee 0%, #d9ead9 45%, #c3ddc6 100%);
+  /* Deep forest green at the top, fading to a light pale green at the bottom */
+  background: linear-gradient(to bottom, #0f3d20 0%, #4d7c53 35%, #cfe3d1 75%, #eef5ee 100%);
   background-attachment: fixed;
   min-height: 100vh;
 
@@ -29,18 +29,18 @@ body {
   margin: 0 !important;
 }
 
-/* Title */
+/* Title (sits directly on the dark top of the page gradient, so it needs light text) */
 h1 {
   font-size: 1.7rem;
   font-weight: 800;
   margin: 8px 0 6px;
-  color: #14532d;
+  color: #ffffff;
 }
 
 .page-indicator {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #166534;
+  color: #d9f2d9;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0 0 20px;
@@ -289,6 +289,81 @@ button.danger:active {
   font-size: 16px;
   padding: 16px;
   border-radius: 12px;
+}
+
+/* Success toast (shown on Submit) */
+#toast {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 24px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  background: #14532d;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+#toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#toast .toast-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toast .toast-body {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+#toast .toast-title {
+  font-weight: 800;
+  margin: 0 0 2px;
+}
+
+#toast .toast-close {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  color: #d9f2d9;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0 0 0 8px;
+  cursor: pointer;
+  flex: none;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  #toast {
+    left: auto;
+    max-width: 380px;
+  }
 }
 
 /* Desktop: constrain width only on larger screens */
